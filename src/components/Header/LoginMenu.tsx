@@ -8,9 +8,11 @@ import SearchBar from './SearchBar';
 const LoginMenu = () => {
     return (
         <div className={styles.loginMenu}>
-            {/* <FontAwesomeIcon icon={faHeart} /> */}
             <SearchBar />
-            <Link href="#">Favoriter</Link>
+            <div className={styles.favorites}>
+                <FontAwesomeIcon icon={faHeart} />
+                <Link href="#">Favoriter</Link>
+            </div>
             <Link href="#">Varukorg</Link>
             <Link href="#">Logga in</Link>
         </div>
