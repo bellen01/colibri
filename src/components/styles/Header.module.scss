@@ -1,0 +1,17 @@
+.header {
+    color: green;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    // margin: 0 0 2rem 0;
+    padding: 0 6rem;
+    height: 150px;
+    border-bottom: 1px solid black;
+}
+
+// .wrapper>* {
+//     width: 33%;
+// }

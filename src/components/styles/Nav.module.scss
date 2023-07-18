@@ -1,0 +1,11 @@
+.headerNav {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+    width: 33%;
+}
+
+.headerNav>* {
+    height: auto;
+}
