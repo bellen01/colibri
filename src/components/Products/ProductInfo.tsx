@@ -31,9 +31,9 @@ const ProductInfo = () => {
                         <div className={styles.select}>
                             <Select options={options} value={value} onChange={option => setValue(option)} />
                         </div>
-                        <Select2 options={options} value={value} onChange={option => setValue(option)} />
+                        {/* <Select2 options={options} value={value} onChange={option => setValue(option)} /> */}
                         <div className={styles.purchaseContainer}>
-                            <button className={styles.purchaseButton}>Köp</button>
+                            <button className={styles.purchaseButton}>Lägg i varukorg</button>
                             <div className={styles.icon}>
                                 <FontAwesomeIcon icon={faHeart} />
                             </div>

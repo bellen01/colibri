@@ -90,7 +90,19 @@ h1 {
   font-family: var(--font-montserrat);
 }
 
-p {
+h2 {
+  font-size: 2rem;
+  font-family: var(--font-montserrat);
+}
+
+p,
+span,
+li {
+  font-family: var(--font-open-sans);
+}
+
+button {
+  font-size: 1rem;
   font-family: var(--font-open-sans);
 }
 

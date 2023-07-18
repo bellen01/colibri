@@ -60,10 +60,13 @@
 }
 
 .selectItem.selected {
-    background-color: hsl(200, 100%, 70%);
+    // background-color: hsl(200, 100%, 70%);
+    background-color: #333;
+    color: white;
 }
 
 .selectItem.highlighted {
-    background-color: hsl(200, 100%, 50%);
+    // background-color: hsl(200, 100%, 50%);
+    background-color: #777;
     color: white;
 }

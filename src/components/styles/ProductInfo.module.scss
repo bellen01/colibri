@@ -17,6 +17,7 @@
 
 .image {
     width: 45%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .infoWrapper {
@@ -29,7 +30,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    // border: 1px solid #777;
+    color: #777;
 }
 
 // .product {
@@ -75,13 +77,16 @@
 .purchaseContainer {
     display: flex;
     justify-content: space-between;
+    border: .05em solid #777;
+    border-radius: .25em;
     // gap: 1.5rem;
 }
 
 .purchaseButton {
     width: 85%;
     height: 4rem;
-    background-color: black;
+    background-color: #777;
     color: white;
     border: none;
+    border-radius: .25em 0 0 .25em;
 }
