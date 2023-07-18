@@ -1,9 +1,20 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react';
 import styles from '@/components/styles/ProductInfo.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import Select from './Select';
+import Select2 from './Select2';
+
+const options = [
+    // { label: "Välj storlek", value: 0 },
+    { label: "21x30", value: 1 },
+    { label: "30x40", value: 2 },
+]
 
 const ProductInfo = () => {
+    const [value, setValue] = useState<typeof options[0] | undefined>()
+
     return (
         <div className={styles.productInfoWrapper}>
             <div className={styles.productInfo}>
@@ -17,18 +28,10 @@ const ProductInfo = () => {
                         <p>Pris</p>
                     </div>
                     <div>
-                        <div className={styles.selectContainer}>
-                            <select name="" id="" className={styles.selectBox}>
-                                <option value="first">first</option>
-                                <option value="second">second</option>
-                                <option value="third">third</option>
-                            </select>
+                        <div className={styles.select}>
+                            <Select options={options} value={value} onChange={option => setValue(option)} />
                         </div>
-                        <select name="" id="" className={styles.select}>
-                            <option value="">Välj Storlek</option>
-                            <option value="21x30">21x30cm</option>
-                            <option value="30x40">30x40cm</option>
-                        </select>
+                        <Select2 options={options} value={value} onChange={option => setValue(option)} />
                         <div className={styles.purchaseContainer}>
                             <button className={styles.purchaseButton}>Köp</button>
                             <div className={styles.icon}>
