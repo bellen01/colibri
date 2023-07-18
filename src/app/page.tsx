@@ -5,13 +5,13 @@ import Products from '@/components/Products/Products'
 import ProductInfo from '@/components/Products/ProductInfo'
 import { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'Colibri',
-}
+// export const metadata: Metadata = {
+//   title: 'Colibri',
+// }
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <section className={styles.section}>
       <Products />
       {/* <ProductInfo /> */}
       {/* <div className={styles.description}>
@@ -100,6 +100,6 @@ export default function Home() {
           </p>
         </a>
       </div> */}
-    </main>
+    </section>
   )
 }
