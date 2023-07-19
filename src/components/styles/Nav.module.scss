@@ -1,11 +1,20 @@
 .headerNav {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 2.5rem;
     align-items: center;
     width: 33%;
 }
 
 .headerNav>* {
     height: auto;
+}
+
+.headerNav a {
+    padding: .25rem 0;
+    font-family: var(--font-montserrat);
+}
+
+.headerNav a:hover {
+    border-bottom: 1.5px solid #40B1A6;
 }
