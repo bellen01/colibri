@@ -4,17 +4,33 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import SearchBar from './SearchBar';
+import { faBagShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const LoginMenu = () => {
     return (
         <div className={styles.loginMenu}>
             <SearchBar />
             <div className={styles.favorites}>
-                <FontAwesomeIcon icon={faHeart} />
-                <Link href="#">Favoriter</Link>
+                <Link href="#">
+                    <FontAwesomeIcon icon={faHeart} className={styles.icons} />
+                </Link>
+                {/* <FontAwesomeIcon icon={faHeart} />
+                <Link href="#">Favoriter</Link> */}
             </div>
-            <Link href="#">Varukorg</Link>
-            <Link href="#">Logga in</Link>
+            <div className={styles.favorites}>
+                <Link href="#">
+                    <FontAwesomeIcon icon={faBagShopping} className={styles.icons} />
+                </Link>
+                {/* <FontAwesomeIcon icon={faBagShopping} />
+                <Link href="#">Varukorg</Link> */}
+            </div>
+            <div className={styles.favorites}>
+                <Link href="#">
+                    <FontAwesomeIcon icon={faUser} className={styles.icons} />
+                </Link>
+                {/* <FontAwesomeIcon icon={faUser} />
+                <Link href="#">Logga in</Link> */}
+            </div>
         </div>
     )
 }
