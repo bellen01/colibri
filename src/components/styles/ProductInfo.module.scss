@@ -29,12 +29,19 @@
 
 .icon {
     font-size: 1.5rem;
-    width: 4rem;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
-    // border: 1px solid #777;
-    color: #777;
+    border: 1px solid #E169BF;
+    color: #E169BF;
+    cursor: pointer;
+    border-radius: .25em;
+}
+
+.icon:hover {
+    background-color: #E169BF;
+    color: white;
 }
 
 // .product {
@@ -79,17 +86,28 @@
 
 .purchaseContainer {
     display: flex;
-    justify-content: space-between;
-    border: .05em solid #777;
+    // justify-content: space-between;
+    // border: .05em solid #40B1A6;
     border-radius: .25em;
-    // gap: 1.5rem;
+    gap: 1rem;
 }
 
 .purchaseButton {
     width: 85%;
     height: 4rem;
-    background-color: #777;
+    // background-color: #40B1A6;
+    // color: white;
+    background-color: white;
+    border: 1px solid #40B1A6;
+    color: #40B1A6;
+    // border: none;
+    // border-radius: .25em 0 0 .25em;
+    border-radius: .25em;
+    cursor: pointer;
+    // font-weight: 300;
+}
+
+.purchaseButton:hover {
     color: white;
-    border: none;
-    border-radius: .25em 0 0 .25em;
+    background-color: #40B1A6;
 }
