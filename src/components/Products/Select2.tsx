@@ -40,15 +40,16 @@ const Select2 = ({ value, onChange, options }: SelectProps) => {
 
     return (
         <div className={styles.wrapper} >
-            <div className={styles.select} onClick={() => setIsOpen(prev => !prev)} /*onBlur={() => setIsOpen(false)}*/>
+            <div className={styles.select} onClick={() => setIsOpen(prev => !prev)} onBlur={(e) => { console.log(e); e.relatedTarget === null && setIsOpen(false) }}>
                 {/* <label htmlFor="button">Storlek</label> */}
                 <button className={styles.button} id="button" onClick={toggleClass} >{value ? value.label : "Välj storlek"} <FontAwesomeIcon icon={faAngleDown} /></button>
-                <div className={`${styles.selectContainer} ${isOpen ? styles.show : ""}`}>
+                <div className={`${styles.selectContainer} ${isOpen ? styles.show : ""}`} >
                     {options.map((option, index) => (
-                        <div>
-                            <label onMouseEnter={() => setHighlightedIndex(index)} key={option.label} className={`${styles.selectItem} ${isOptionSelected(option) ? styles.selected : ""} ${index === highlightedIndex ? styles.highlighted : ""}`}
+                        <div key={option.label}>
+                            <label onMouseEnter={() => setHighlightedIndex(index)} className={`${styles.selectItem} ${isOptionSelected(option) ? styles.selected : ""} ${index === highlightedIndex ? styles.highlighted : ""}`}
                                 htmlFor={option.value}
                                 onClick={e => {
+                                    console.log("hej")
                                     selectOption(option)
                                     setIsOpen(false)
                                     // e.stopPropagation()
@@ -64,7 +65,7 @@ const Select2 = ({ value, onChange, options }: SelectProps) => {
                     <input className={styles.option} type="radio" name="storlek" id="select-30x40" value="30x40" /> */}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

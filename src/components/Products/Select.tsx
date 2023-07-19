@@ -1,21 +1,20 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import styles from '@/components/styles/Select.module.scss';
 
 type SelectOption = {
     label: string,
     value: any,
-}
+};
 
 type SelectProps = {
     value?: SelectOption,
     onChange: (value: SelectOption | undefined) => void,
     options: SelectOption[],
-}
+};
 
 const Select = ({ value, onChange, options }: SelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [highlightedIndex, setHighlightedIndex] = useState(0)
-    const [selected, setSelected] = useState()
+    const [highlightedIndex, setHighlightedIndex] = useState(0);
 
     function selectOption(option: SelectOption) {
         if (option !== value) onChange(option)
