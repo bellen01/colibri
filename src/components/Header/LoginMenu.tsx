@@ -18,18 +18,18 @@ const LoginMenu = () => {
                 <Link href="#">Favoriter</Link> */}
             </div>
             <div className={styles.favorites}>
+                <Link href="/user">
+                    <FontAwesomeIcon icon={faUser} className={styles.icons} />
+                </Link>
+                {/* <FontAwesomeIcon icon={faUser} />
+                <Link href="#">Logga in</Link> */}
+            </div>
+            <div className={styles.favorites}>
                 <Link href="#">
                     <FontAwesomeIcon icon={faBagShopping} className={styles.icons} />
                 </Link>
                 {/* <FontAwesomeIcon icon={faBagShopping} />
                 <Link href="#">Varukorg</Link> */}
-            </div>
-            <div className={styles.favorites}>
-                <Link href="#">
-                    <FontAwesomeIcon icon={faUser} className={styles.icons} />
-                </Link>
-                {/* <FontAwesomeIcon icon={faUser} />
-                <Link href="#">Logga in</Link> */}
             </div>
         </div>
     )
