@@ -12,7 +12,7 @@ const LoginMenu = () => {
             <SearchBar />
             <div className={styles.favorites}>
                 <Link href="#">
-                    <FontAwesomeIcon icon={faHeart} className={styles.icons} />
+                    <FontAwesomeIcon icon={faHeart} className={`${styles.icons} ${styles.heart}`} />
                 </Link>
                 {/* <FontAwesomeIcon icon={faHeart} />
                 <Link href="#">Favoriter</Link> */}
