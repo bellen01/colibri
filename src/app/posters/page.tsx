@@ -6,6 +6,7 @@ import { montserrat } from '@/app/fonts';
 // import ProductInfo from './ProductInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import Filter from '@/components/Products/Filter';
 // import Select from './Select';
 
 
@@ -16,12 +17,15 @@ const Products = () => {
             <div className={styles.heroContainer}>
                 <h1>Posters</h1>
                 <p>text</p>
-                <div>filter</div>
-                <div className={styles.wrapper}>
-                    <Product />
-                    <Product />
-                    <Product />
-                    <Product />
+                {/* <div>filter</div> */}
+                <div className={styles.filterAndProductsContainer}>
+                    <Filter />
+                    <div className={styles.wrapper}>
+                        <Product />
+                        <Product />
+                        <Product />
+                        <Product />
+                    </div>
                 </div>
             </div>
             {/* <ProductInfo /> */}

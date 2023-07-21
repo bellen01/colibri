@@ -1,0 +1,23 @@
+.aside {
+    margin-right: 4rem;
+    padding-right: 2rem;
+    border-right: 1px solid #bbbaba;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    // justify-content: flex-start;
+    text-align: left;
+    font-family: var(--font-montserrat);
+}
+
+.nav a:hover {
+    // border-bottom: 1.5px solid #40B1A6;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: #40B1A6;
+    text-underline-offset: .5rem;
+    color: #40B1A6;
+}
