@@ -7,6 +7,7 @@ import { montserrat } from '@/app/fonts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Filter from '@/components/Products/Filter';
+import LoginComponent from '@/components/Login/LoginComponent';
 // import Select from './Select';
 
 
@@ -14,6 +15,7 @@ const Products = () => {
 
     return (
         <div className={styles.container}>
+            {/* <LoginComponent /> */}
             <div className={styles.heroContainer}>
                 <h1>Posters</h1>
                 <p>text</p>
