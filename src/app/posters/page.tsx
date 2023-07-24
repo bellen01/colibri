@@ -20,14 +20,14 @@ const Products = () => {
                 <h1>Posters</h1>
                 <p>text</p>
                 {/* <div>filter</div> */}
-                <div className={styles.filterAndProductsContainer}>
-                    <Filter />
-                    <div className={styles.wrapper}>
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                    </div>
+            </div>
+            <div className={styles.filterAndProductsContainer}>
+                <Filter />
+                <div className={styles.wrapper}>
+                    <Product />
+                    <Product />
+                    <Product />
+                    <Product />
                 </div>
             </div>
             {/* <ProductInfo /> */}
