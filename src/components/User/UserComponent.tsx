@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '@/components/styles/UserComponent.module.scss';
 import Filter from '../Products/Filter';
 import UserFilter from './UserFilter';
+import Cart from '../Cart/Cart';
 
 const UserComponent = () => {
 
@@ -15,8 +16,9 @@ const UserComponent = () => {
             </div>
             <div className={styles.filterAndInfoContainer}>
                 <UserFilter />
-                <div className={styles.wrapper}>
-                </div>
+                <Cart />
+                {/* <div className={styles.wrapper}>
+                </div> */}
             </div>
         </div>
     )
