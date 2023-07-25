@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from '@/components/styles/UserComponent.module.scss';
-import Filter from '../Products/Filter';
 import UserFilter from './UserFilter';
 import Cart from '../Cart/Cart';
+import HeroHeading from '../General/HeroHeading';
 
 const UserComponent = () => {
 
@@ -10,15 +10,10 @@ const UserComponent = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.heroContainer}>
-                <h1>Välkommen {user}</h1>
-                <p>text</p>
-            </div>
+            <HeroHeading heading={`Välkommen ${user}`} />
             <div className={styles.filterAndInfoContainer}>
                 <UserFilter />
                 <Cart />
-                {/* <div className={styles.wrapper}>
-                </div> */}
             </div>
         </div>
     )
