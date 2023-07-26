@@ -3,6 +3,8 @@ import styles from '@/components/styles/UserComponent.module.scss';
 import UserFilter from './UserFilter';
 import Cart from '../Cart/Cart';
 import HeroHeading from '../General/HeroHeading';
+import Favorites from '../Favorites/Favorites';
+import AccountSettings from '../AccountSettings/AccountSettings';
 
 const UserComponent = () => {
 
@@ -15,6 +17,8 @@ const UserComponent = () => {
                 <UserFilter />
                 <Cart />
             </div>
+            <Favorites />
+            <AccountSettings />
         </div>
     )
 }
