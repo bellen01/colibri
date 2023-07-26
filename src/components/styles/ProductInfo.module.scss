@@ -35,8 +35,11 @@
     align-items: center;
     border: 1px solid #E169BF;
     color: #E169BF;
+    // border: 1px solid #8F67BB;
+    // color: #8F67BB;
     cursor: pointer;
     border-radius: .25em;
+    // margin: 2rem 0;
 }
 
 .icon:hover {
@@ -92,22 +95,23 @@
     gap: 1rem;
 }
 
-.purchaseButton {
-    width: 85%;
-    height: 4rem;
-    // background-color: #40B1A6;
-    // color: white;
-    background-color: white;
-    border: 1px solid #40B1A6;
-    color: #40B1A6;
-    // border: none;
-    // border-radius: .25em 0 0 .25em;
-    border-radius: .25em;
-    cursor: pointer;
-    // font-weight: 300;
-}
+// .purchaseButton {
+//     width: 85%;
+//     height: 4rem;
+//     // background-color: #40B1A6;
+//     // color: white;
+//     background-color: white;
+//     border: 1px solid #40B1A6;
+//     color: #40B1A6;
+//     // border: none;
+//     // border-radius: .25em 0 0 .25em;
+//     border-radius: .25em;
+//     cursor: pointer;
+//     // font-weight: 300;
+//     // margin: 2rem 0;
+// }
 
-.purchaseButton:hover {
-    color: white;
-    background-color: #40B1A6;
-}
+// .purchaseButton:hover {
+//     color: white;
+//     background-color: #40B1A6;
+// }

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Select from '@/components/Products/Select';
 import Select2 from '@/components/Products/Select2';
+import Button from '@/components/General/Button';
 
 const options = [
     // { label: "Välj storlek", value: 0 },
@@ -33,7 +34,8 @@ const ProductInfo = () => {
                     </div>
                     {/* <Select2 options={options} value={value} onChange={option => setValue(option)} /> */}
                     <div className={styles.purchaseContainer}>
-                        <button className={styles.purchaseButton}>Lägg i varukorg</button>
+                        <Button text="Lägg i varukorg" width="100%" height={"4rem"} margin={"0"} />
+                        {/* <button className={styles.purchaseButton}>Lägg i varukorg</button> */}
                         <div className={styles.icon}>
                             <FontAwesomeIcon icon={faHeart} />
                         </div>

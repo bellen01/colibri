@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '@/components/styles/RegisterComponent.module.scss';
+import Button from '../General/Button';
 
 const RegisterComponent = () => {
     return (
@@ -11,7 +12,8 @@ const RegisterComponent = () => {
                     <input type="lastName" name="lastName" id="lastName" placeholder='Efternamn' />
                     <input type="email" name="email" id="email" placeholder='E-mail' />
                     <input type="password" name="password" id="password" placeholder='Lösenord' />
-                    <button className={styles.registerButton}>Skapa konto</button>
+                    <Button text="Skapa konto" />
+                    {/* <button className={styles.registerButton}>Skapa konto</button> */}
                 </div>
             </div>
         </div>
