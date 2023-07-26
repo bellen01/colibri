@@ -25,7 +25,7 @@ const LoginMenu = () => {
                 <Link href="#">Logga in</Link> */}
             </div>
             <div className={styles.favorites}>
-                <Link href="#">
+                <Link href="/login">
                     <FontAwesomeIcon icon={faBagShopping} className={styles.icons} />
                 </Link>
                 {/* <FontAwesomeIcon icon={faBagShopping} />
