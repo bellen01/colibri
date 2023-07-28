@@ -7,6 +7,7 @@ config.autoAddCss = false
 import { montserrat } from './fonts'
 import { open_sans } from './fonts'
 import { open_sans400 } from './fonts'
+import Footer from '@/components/Footer/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           <main>
             {children}
           </main>
+          <Footer />
         </div>
       </body>
     </html>

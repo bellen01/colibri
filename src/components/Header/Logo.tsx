@@ -6,7 +6,7 @@ import { cinzel } from '@/app/fonts';
 const Logo = () => {
     return (
         <div className={`${cinzel.className} ${styles.wrapper}`}>
-            <a href="#" className={styles.logo}>Colibri</a>
+            <a href="/" className={styles.logo}>Colibri</a>
             {/* <Link href="#">Colibri</Link> */}
         </div>
     )
