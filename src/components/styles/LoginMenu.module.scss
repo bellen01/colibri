@@ -8,8 +8,17 @@
     // padding-right: 4rem;
 }
 
+.loginMenu a {
+    font-family: var(--font-montserrat);
+}
+
 .icons {
-    font-size: 1rem;
+    font-size: 1.25rem;
+}
+
+.icons.heart {
+    // color: #8F67BB;
+    color: #E169BF;
 }
 
 .favorites {

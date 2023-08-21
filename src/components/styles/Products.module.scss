@@ -1,4 +1,5 @@
 .container {
+    // display: flex;
     // position: relative;
 }
 
@@ -11,9 +12,13 @@
     margin-bottom: 2rem;
 }
 
+.filterAndProductsContainer {
+    display: flex;
+    padding: 2rem 0;
+}
+
 .wrapper {
     // background-color: rgb(234, 234, 234);
-    padding: 2rem 0;
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(3, 1fr);

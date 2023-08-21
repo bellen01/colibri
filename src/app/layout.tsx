@@ -6,6 +6,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 import { montserrat } from './fonts'
 import { open_sans } from './fonts'
+import { open_sans400 } from './fonts'
+import Footer from '@/components/Footer/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,12 +29,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${montserrat.variable} ${open_sans.variable}`}>
+      <body className={`${inter.className} ${montserrat.variable} ${open_sans.variable} ${open_sans400.variable}`}>
         <div>
           <Header />
           <main>
             {children}
           </main>
+          <Footer />
         </div>
       </body>
     </html>

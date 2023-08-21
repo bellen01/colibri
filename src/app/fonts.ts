@@ -18,3 +18,9 @@ export const open_sans = Open_Sans({
     weight: '300',
 })
 
+export const open_sans400 = Open_Sans({
+    subsets: ['latin'],
+    variable: '--font-open-sans400',
+    weight: '400',
+})
+
