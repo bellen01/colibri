@@ -7,10 +7,10 @@ import Button from '../General/Button';
 
 const AccountSettings = () => {
     return (
-        <div>
+        <div className={styles.container}>
             <CustomerInformation />
-            <ChangeCustomerInformation />
-            <Button text={"Byt lösenord"} width={"25%"} />
+            {/* <ChangeCustomerInformation /> */}
+            {/* <Button text={"Byt lösenord"} width={"25%"} /> */}
             {/* <button className={styles.button}>Byt lösenord</button> */}
         </div>
     )

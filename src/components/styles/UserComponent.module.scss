@@ -12,3 +12,33 @@
     display: flex;
     padding: 2rem 0;
 }
+
+.aside {
+    // min-width: 17%;
+    margin-right: 4rem;
+    padding-right: 2rem;
+    border-right: 1px solid #bbbaba;
+}
+
+.content {
+    flex: 1;
+    // min-width: 80%;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    // justify-content: flex-start;
+    text-align: left;
+    font-family: var(--font-montserrat);
+}
+
+.nav a:hover {
+    // border-bottom: 1.5px solid #40B1A6;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: #40B1A6;
+    text-underline-offset: .5rem;
+    // color: #40B1A6;
+}

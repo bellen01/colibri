@@ -1,6 +1,10 @@
-.container {
+.wrapper {
     width: 40%;
-    text-align: center;
+}
+
+.container {
+    width: 100%;
+    // text-align: center;
 }
 
 .h2 {
@@ -8,13 +12,24 @@
 }
 
 .informationContainer {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
 }
 
 .informationContainer p {
     // padding: .5em;
     margin: .5rem 0;
+}
+
+.information {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.customerNumber {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1.5rem;
 }
 
 .pairs {
