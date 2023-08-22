@@ -1,18 +1,20 @@
 .headerNav {
     display: flex;
-    justify-content: center;
-    gap: 2.5rem;
+    // justify-content: center;
+    // gap: 2.5rem;
     align-items: center;
-    width: 33%;
+    // width: 33%;
 }
 
 .headerNav>* {
     height: auto;
+    flex: 1;
 }
 
 .headerNav a {
     // padding: .25rem 0;
     font-family: var(--font-montserrat);
+    text-align: center;
 }
 
 .headerNav a:hover {

@@ -12,6 +12,6 @@
     border-bottom: 1px solid black;
 }
 
-// .wrapper>* {
-//     width: 33%;
-// }
+.wrapper>* {
+    flex: 1;
+}

@@ -11,7 +11,7 @@ const LoginMenu = () => {
         <div className={styles.loginMenu}>
             <SearchBar />
             <div className={styles.favorites}>
-                <Link href="#">
+                <Link href="/user">
                     <FontAwesomeIcon icon={faHeart} className={`${styles.icons} ${styles.heart}`} />
                 </Link>
                 {/* <FontAwesomeIcon icon={faHeart} />
