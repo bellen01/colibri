@@ -2,7 +2,11 @@ import React from 'react';
 import styles from '@/components/styles/ChangeCustomerInformation.module.scss';
 import Button from '../General/Button';
 
-const ChangeCustomerInformation = () => {
+interface IChangeCustomerInformationProps {
+    setState: (val: string) => void;
+}
+
+const ChangeCustomerInformation = ({ setState }: IChangeCustomerInformationProps) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -17,7 +21,7 @@ const ChangeCustomerInformation = () => {
                     <input type="text" name="mobile" id="mobile" placeholder='Mobilnr' />
                 </form>
                 <div className={styles.buttonContainer}>
-                    <button className={styles.cancelButton}>Avbryt</button>
+                    <button onClick={() => setState("customerInformation")} className={styles.cancelButton}>Avbryt</button>
                     <Button text="Spara" width='25%' />
                     {/* <button>Spara</button> */}
                 </div>
