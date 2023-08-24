@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const FavoritesItem = () => {
     return (
-        <div>
+        <div className={styles.wrapper}>
             <h2 className={styles.h2}>Favoriter</h2>
             <div className={styles.cartItemWrapper}>
                 <img src="/3827_2.jpg" alt="temporär bild" className={styles.image} />

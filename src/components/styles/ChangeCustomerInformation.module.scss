@@ -1,5 +1,5 @@
 .wrapper {
-    width: 100%;
+    width: 40%;
     // display: flex;
     // justify-content: center;
 }
@@ -38,6 +38,10 @@
     gap: 1rem;
 }
 
+.buttonContainer a {
+    width: 25%; //hör ihop med den eventuella ful-lösningen gällande width nedan.
+}
+
 .cancelButton {
     height: 3rem;
     background-color: black;
@@ -50,7 +54,7 @@
     border-radius: .25em;
     cursor: pointer;
     margin: 2rem 0;
-    width: 25%;
+    width: 100%; //känns som en ful-lösning, se över hur och om jag vill göra på något annat sätt
 }
 
 .cancelButton:hover {
