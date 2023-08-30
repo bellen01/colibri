@@ -6,7 +6,7 @@ const Nav = () => {
     return (
         <nav className={styles.headerNav}>
             <Link href="/posters">POSTERS</Link>
-            <Link href="#">TOPPLISTAN</Link>
+            <Link href="/posters/topplistan">TOPPLISTAN</Link>
             <Link href="#">NYHETER</Link>
         </nav>
     )

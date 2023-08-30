@@ -1,11 +1,24 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 import styles from '@/components/styles/HeroHeading.module.scss';
+import { usePathname } from 'next/navigation'
 
 interface IHeroHeadingProps {
-    heading: string;
+    heading: string | null;
 }
 
 const HeroHeading = ({ heading }: IHeroHeadingProps) => {
+    //     const pathname = usePathname();
+
+    // const getPath = () => {
+    //     const path = pathname.split('/');
+
+    // }
+
+    // useEffect(() => {
+    //     console.log('pathname', pathname);
+    // }, []);
+
     return (
         <div className={styles.heroContainer}>
             <h1>{heading}</h1>
