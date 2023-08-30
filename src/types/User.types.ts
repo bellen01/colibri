@@ -6,7 +6,7 @@ export type User = {
     email: string,
     phone: string,
     admin: boolean,
-    password: string,
+    password?: string,
 }
 
 export type Address = {

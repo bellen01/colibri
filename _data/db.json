@@ -1,0 +1,92 @@
+{
+    "posters": [
+        {
+            "id": 1,
+            "image": {
+                "img": "/3827_2.jpg",
+                "altText": "Temporär bild"
+            },
+            "title": "Hav",
+            "description": "Bild på hav",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                2
+            ],
+            "news": true,
+            "topPicks": true
+        },
+        {
+            "id": 2,
+            "image": {
+                "img": "/3827_2.jpg",
+                "altText": "Temporär bild"
+            },
+            "title": "Blomma",
+            "description": "Bild på blomma",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                3
+            ],
+            "news": false,
+            "topPicks": false
+        },
+        {
+            "id": 3,
+            "image": {
+                "img": "/3827_2.jpg",
+                "altText": "Temporär bild"
+            },
+            "title": "Drops",
+            "description": "Bild på vattendroppar",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                4
+            ],
+            "news": true,
+            "topPicks": false
+        }
+    ],
+    "users": [
+        {
+            "customerId": 123,
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "address": {
+                "streetName": "Testgatan",
+                "streetNumber": "1A",
+                "zipCode": 12345,
+                "city": "Test"
+            },
+            "email": "jane.doe@test.com",
+            "phone": "0722233444",
+            "admin": false
+        }
+    ]
+}
