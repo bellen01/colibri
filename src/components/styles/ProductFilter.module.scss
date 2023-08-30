@@ -32,3 +32,11 @@
     cursor: pointer;
     outline: inherit;
 }
+
+.active {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: #40B1A6;
+    text-underline-offset: .5rem;
+    // color: #40B1A6; //TODO: fungerar inte, kolla på varför
+}
