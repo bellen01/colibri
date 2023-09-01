@@ -3,11 +3,11 @@
         {
             "id": 1,
             "image": {
-                "img": "/3827_2.jpg",
+                "img": "/IMG_8965.JPG",
                 "altText": "Temporär bild"
             },
-            "title": "Hav",
-            "description": "Bild på hav",
+            "title": "Sunset Lily",
+            "description": "Bild på lilja",
             "priceAndSize": [
                 {
                     "size": "21x30",
@@ -19,7 +19,8 @@
                 }
             ],
             "category": [
-                2
+                3,
+                4
             ],
             "news": true,
             "topPicks": true
@@ -27,11 +28,11 @@
         {
             "id": 2,
             "image": {
-                "img": "/3827_2.jpg",
+                "img": "/IMG_8995.JPG",
                 "altText": "Temporär bild"
             },
-            "title": "Blomma",
-            "description": "Bild på blomma",
+            "title": "Still beautiful",
+            "description": "Bild på vissen blomma",
             "priceAndSize": [
                 {
                     "size": "21x30",
@@ -51,11 +52,11 @@
         {
             "id": 3,
             "image": {
-                "img": "/3827_2.jpg",
+                "img": "/IMG_9045.JPG",
                 "altText": "Temporär bild"
             },
-            "title": "Drops",
-            "description": "Bild på vattendroppar",
+            "title": "Little rosebud",
+            "description": "Bild på rosenknopp",
             "priceAndSize": [
                 {
                     "size": "21x30",
@@ -67,10 +68,180 @@
                 }
             ],
             "category": [
-                4
+                3
             ],
             "news": true,
             "topPicks": false
+        },
+        {
+            "id": 4,
+            "image": {
+                "img": "/IMG_9103.JPG",
+                "altText": "Temporär bild"
+            },
+            "title": "Glistening red",
+            "description": "Bild på röda vinbär",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                2
+            ],
+            "news": true,
+            "topPicks": true
+        },
+        {
+            "id": 5,
+            "image": {
+                "img": "/IMG_9127.JPG",
+                "altText": "Temporär bild"
+            },
+            "title": "Raspberry",
+            "description": "Bild på hallon",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                2
+            ],
+            "news": true,
+            "topPicks": true
+        },
+        {
+            "id": 6,
+            "image": {
+                "img": "/IMG_9137.JPG",
+                "altText": "Temporär bild"
+            },
+            "title": "Not ready yet",
+            "description": "Bild på omoget hallon",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                2
+            ],
+            "news": true,
+            "topPicks": true
+        },
+        {
+            "id": 7,
+            "image": {
+                "img": "/IMG_9179.JPG",
+                "altText": "Temporär bild"
+            },
+            "title": "And you were all yellow",
+            "description": "Bild på gul blomma med vattendroppar",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                3,
+                4
+            ],
+            "news": true,
+            "topPicks": true
+        },
+        {
+            "id": 8,
+            "image": {
+                "img": "/IMG_9339.JPG",
+                "altText": "Temporär bild"
+            },
+            "title": "Lila",
+            "description": "Bild på lila blad med vattendroppar",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                3,
+                4
+            ],
+            "news": true,
+            "topPicks": true
+        },
+        {
+            "id": 9,
+            "image": {
+                "img": "/IMG_9544.JPG",
+                "altText": "Temporär bild"
+            },
+            "title": "Surrounded",
+            "description": "Bild på ormbunkar",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                2
+            ],
+            "news": true,
+            "topPicks": true
+        },
+        {
+            "id": 10,
+            "image": {
+                "img": "/IMG_9761.JPG",
+                "altText": "Temporär bild"
+            },
+            "title": "Golden field",
+            "description": "Bild på fält i solnedgångsljus",
+            "priceAndSize": [
+                {
+                    "size": "21x30",
+                    "price": 99
+                },
+                {
+                    "size": "30x40",
+                    "price": 199
+                }
+            ],
+            "category": [
+                2
+            ],
+            "news": true,
+            "topPicks": true
         }
     ],
     "users": [
