@@ -4,12 +4,13 @@ import styles from '@/components/styles/ProductInfo.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Select from '@/components/Products/Select';
-import Select2 from '@/components/Products/Select2';
 import Button from '@/components/General/Button';
 import { Poster } from '@/types/Product.types';
 import { getPoster } from '../../posters/fetchFunctions';
-import Select3 from '@/components/Products/Select3';
 import { SelectOption } from '@/components/Products/Select';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/redux/features/cartSlice';
+import { useRouter } from 'next/navigation';
 
 // const options = [
 //     // { label: "Välj storlek", value: 0 },
@@ -24,6 +25,11 @@ type Params = {
     }
 }
 
+type SizeAndPrice = {
+    size: string,
+    price: number
+}
+
 const ProductInfo = ({ params }: Params) => {
     const [poster, setPoster] = useState<Poster>();
     const [sizeOptions, setSizeOptions] = useState<SelectOption[]>([]);
@@ -31,6 +37,9 @@ const ProductInfo = ({ params }: Params) => {
     const [value, setValue] = useState<SelectOption>();
     const currency = "kr";
     const [price, setPrice] = useState<string>(`Från 99 ${currency}`);
+    const dispatch = useDispatch();
+    const [sizeAndPrice, setSizeAndPrice] = useState<SizeAndPrice>()
+    const router = useRouter();
 
 
     // const poster = await getPoster(params.id);
@@ -59,7 +68,9 @@ const ProductInfo = ({ params }: Params) => {
     useEffect(() => {
         getPosterById();
         getPrice();
-    }, [value]);
+        console.log('value', value);
+        console.log('sizeAndPrice', sizeAndPrice)
+    }, [value, sizeAndPrice]);
 
     const getPrice = () => {
         if (value) {
@@ -68,7 +79,20 @@ const ProductInfo = ({ params }: Params) => {
             console.log("result", res);
             // const price = `${res?.price} kr`
             setPrice(`${res?.price} ${currency}`);
+            setSizeAndPrice(res)
         }
+    }
+
+    const addToCartHandler = () => {
+        console.log('tryckt på lägg i varukorg')
+        router.push('/cart');
+        dispatch(addToCart({
+            id: poster?.id,
+            title: poster?.title,
+            quantity: 1,
+            priceAndSize: sizeAndPrice,
+            totalPrice: sizeAndPrice?.price
+        }))
     }
 
 
@@ -97,7 +121,7 @@ const ProductInfo = ({ params }: Params) => {
                     </div>
                     {/* <Select2 options={options} value={value} onChange={option => setValue(option)} /> */}
                     <div className={styles.purchaseContainer}>
-                        <Button text="Lägg i varukorg" width="100%" height={"4rem"} margin={"0"} />
+                        <Button onClick={addToCartHandler} text="Lägg i varukorg" width="100%" height={"4rem"} margin={"0"} />
                         {/* <button className={styles.purchaseButton}>Lägg i varukorg</button> */}
                         <div className={styles.icon}>
                             <FontAwesomeIcon icon={faHeart} />

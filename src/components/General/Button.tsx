@@ -6,11 +6,12 @@ interface IButtonProps {
     width?: string,
     height?: string,
     margin?: string,
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void,
 }
 
-const Button = ({ text, width, height, margin }: IButtonProps) => {
+const Button = ({ text, width, height, margin, onClick }: IButtonProps) => {
     return (
-        <button className={styles.button} style={{ width: `${width}`, height: `${height}`, margin: `${margin}` }}>{text}</button>
+        <button className={styles.button} onClick={onClick} style={{ width: `${width}`, height: `${height}`, margin: `${margin}` }}>{text}</button>
     )
 }
 

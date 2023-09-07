@@ -8,6 +8,7 @@ import { montserrat } from './fonts'
 import { open_sans } from './fonts'
 import { open_sans400 } from './fonts'
 import Footer from '@/components/Footer/Footer'
+import { ReduxProvider } from '@/redux/provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,7 +34,7 @@ export default function RootLayout({
         <div>
           <Header />
           <main>
-            {children}
+            <ReduxProvider>{children}</ReduxProvider>
           </main>
           <Footer />
         </div>

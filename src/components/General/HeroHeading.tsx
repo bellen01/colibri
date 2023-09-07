@@ -5,9 +5,10 @@ import { usePathname } from 'next/navigation'
 
 interface IHeroHeadingProps {
     heading: string | null;
+    text?: string | undefined;
 }
 
-const HeroHeading = ({ heading }: IHeroHeadingProps) => {
+const HeroHeading = ({ heading, text }: IHeroHeadingProps) => {
     //     const pathname = usePathname();
 
     // const getPath = () => {
@@ -22,7 +23,7 @@ const HeroHeading = ({ heading }: IHeroHeadingProps) => {
     return (
         <div className={styles.heroContainer}>
             <h1>{heading}</h1>
-            <p>text</p>
+            <p>{text}</p>
             {/* <div>filter</div> */}
         </div>
     )
