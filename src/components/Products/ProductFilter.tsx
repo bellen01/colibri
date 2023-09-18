@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '@/components/styles/ProductFilter.module.scss';
 import Link from 'next/link';
 import { Poster, productCategories } from '@/types/Product.types';
-import { getPosters } from '@/app/posters/fetchFunctions';
+// import { getPosters } from '@/app/posters/fetchFunctions';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 const ProductFilter = () => {

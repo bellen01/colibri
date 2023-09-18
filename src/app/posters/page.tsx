@@ -4,7 +4,7 @@ import Product from '@/components/Products/Product';
 import styles from '@/components/styles/Products.module.scss';
 import ProductFilter from '@/components/Products/ProductFilter';
 import HeroHeading from '@/components/General/HeroHeading';
-import { getPosters } from './fetchFunctions';
+import { getAllPosters } from './fetchFunctions';
 import { Poster } from '@/types/Product.types';
 import Link from 'next/link';
 
@@ -15,8 +15,9 @@ const Products = () => {
 
 
     useEffect(() => {
-        getPosters().then((data) => setPosters(data));
-
+        // getPosters().then((data) => setPosters(data));
+        getAllPosters().then((data) => setPosters(data));
+        // getAllPosters().then((data) => setPosters(data));
     }, []);
     // const posters = await getPosters();
 

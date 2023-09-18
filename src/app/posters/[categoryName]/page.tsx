@@ -7,7 +7,7 @@ import HeroHeading from '@/components/General/HeroHeading';
 
 import { Poster } from '@/types/Product.types';
 import Link from 'next/link';
-import { getPosters } from '../fetchFunctions';
+import { getPostersByCategory } from '../fetchFunctions';
 import { productCategories } from '@/types/Product.types';
 
 type Params = {
@@ -30,24 +30,34 @@ const PostersByCategory = ({ params }: Params) => {
         setCategoryId(mappedCategories?.categoryId);
     }
 
+    // const getPosters = () => {
+    //     mapCategories();
+    //     if (categoryId) {}
+    // }
 
-    const getPosterByCategory = async () => {
-        try {
-            if (categoryId) {
-                const posters = await getPosters();
-                const postersByCategory = posters?.filter((category) => category.category?.includes(categoryId))
-                console.log('postersbycategory', postersByCategory);
-                setPosters(postersByCategory);
-            }
-        } catch (error) {
-            console.log('error in fetching posters by category', error)
-        }
-    }
+    // const getPosterByCategory = async () => {
+    //     try {
+    //         if (categoryId) {
+    //             const posters = await getPosters();
+    //             const postersByCategory = posters?.filter((category) => category.category?.includes(categoryId))
+    //             console.log('postersbycategory', postersByCategory);
+    //             setPosters(postersByCategory);
+    //         }
+    //     } catch (error) {
+    //         console.log('error in fetching posters by category', error)
+    //     }
+    // }
 
     useEffect(() => {
         mapCategories();
         console.log('categoryid', categoryId)
-        getPosterByCategory()
+        if (categoryId) {
+            getPostersByCategory(categoryId).then(result => setPosters(result));
+        }
+        // if (categoryId) {
+        //     const result = getPosterByCategory(categoryId);
+        //     result.then(p => setPosters(p))
+        // }
     }, [categoryId]);
 
 

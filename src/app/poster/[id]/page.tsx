@@ -6,7 +6,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Select from '@/components/Products/Select';
 import Button from '@/components/General/Button';
 import { Poster } from '@/types/Product.types';
-import { getPoster } from '../../posters/fetchFunctions';
+import { getPosterById } from '../../posters/fetchFunctions';
 import { SelectOption } from '@/components/Products/Select';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/redux/features/cartSlice';
@@ -21,7 +21,7 @@ import { useRouter } from 'next/navigation';
 
 type Params = {
     params: {
-        id: number
+        id: string
     }
 }
 
@@ -43,21 +43,41 @@ const ProductInfo = ({ params }: Params) => {
 
 
     // const poster = await getPoster(params.id);
-    const getPosterById = async () => {
+    // const getPosterById = async () => {
+    //     try {
+    //         const posterData = await getPoster(params.id);
+    //         setPoster(posterData);
+    //         const sizeOptions = posterData.priceAndSize.map(size => {
+    //             return {
+    //                 label: `${size.size} - ${size.price} ${currency}`,
+    //                 value: size.size
+    //             }
+    //         });
+    //         console.log("size", sizeOptions);
+    //         setSizeOptions(sizeOptions);
+    //         // setValue(sizeOptions[0]);
+    //     } catch (error) {
+    //         console.log('error i getPosterById', error);
+    //     }
+    // };
+
+    const getPoster = async (id: string) => {
         try {
-            const posterData = await getPoster(params.id);
+            const posterData = await getPosterById(id);
             setPoster(posterData);
-            const sizeOptions = posterData.priceAndSize.map(size => {
-                return {
-                    label: `${size.size} - ${size.price} ${currency}`,
-                    value: size.size
-                }
-            });
-            console.log("size", sizeOptions);
-            setSizeOptions(sizeOptions);
+            if (posterData) {
+                const sizeOptions = posterData.priceAndSize.map(size => {
+                    return {
+                        label: `${size.size} - ${size.price} ${currency}`,
+                        value: size.size
+                    }
+                });
+                console.log("size", sizeOptions);
+                setSizeOptions(sizeOptions);
+            }
             // setValue(sizeOptions[0]);
         } catch (error) {
-            console.log('error i getPosterById', error);
+            console.log('error i getPoster', error);
         }
     };
 
@@ -66,7 +86,8 @@ const ProductInfo = ({ params }: Params) => {
     // }
 
     useEffect(() => {
-        getPosterById();
+        getPoster(params.id);
+        // getPosterById(params.id);
         getPrice();
         console.log('value', value);
         console.log('sizeAndPrice', sizeAndPrice)
@@ -85,7 +106,7 @@ const ProductInfo = ({ params }: Params) => {
 
     const addToCartHandler = () => {
         console.log('tryckt på lägg i varukorg')
-        router.push('/cart');
+        // router.push('/cart');
         dispatch(addToCart({
             id: poster?.id,
             title: poster?.title,
