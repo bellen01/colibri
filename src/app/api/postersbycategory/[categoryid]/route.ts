@@ -22,18 +22,3 @@ export async function GET(
         status: 200
     })
 }
-
-// export async function GET() {
-//     const findByCategory = query(collection(db, "posters"), where("news", "==", true))
-//     const allPosterData = await getDocs(findByCategory);
-//     let posters: Poster[] = []
-//     allPosterData.forEach((poster) => {
-//         posters.push({ ...poster.data() as Poster, id: poster.id })
-//     })
-
-//     console.log('posters i postersbycategory', posters);
-
-//     return NextResponse.json(posters, {
-//         status: 200
-//     })
-// }

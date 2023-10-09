@@ -22,7 +22,8 @@ const LoginMenu = () => {
 
     return (
         <div className={styles.loginMenu}>
-            <SearchBar />
+            {/* avvaktar med sökfunktionen */}
+            {/* <SearchBar /> */}
             <div className={styles.favorites}>
                 <Link href="/user">
                     <FontAwesomeIcon icon={faHeart} className={`${styles.icons} ${styles.heart}`} />
