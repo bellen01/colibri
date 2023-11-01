@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '@/components/styles/LoginComponent.module.scss';
 import Button from '../General/Button';
+import Link from 'next/link';
 
 const LoginComponent = () => {
     return (
@@ -12,6 +13,7 @@ const LoginComponent = () => {
                     <input type="password" name="password" id="password" placeholder='Lösenord' />
                     <Button text="Logga in" />
                     {/* <button className={styles.loginButton}>Logga in</button> */}
+                    <p>Har du inget konto ännu? Registrera dig <Link href="/register">här</Link></p>
                 </div>
             </div>
         </div>

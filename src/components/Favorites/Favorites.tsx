@@ -1,13 +1,13 @@
-import React from 'react';
-import styles from '@/components/styles/Favorites.module.scss';
-import FavoritesItem from './FavoritesItem';
+//används inte, se user/favorites under app
 
-const Favorites = () => {
-    return (
-        <div>
-            <FavoritesItem />
-        </div>
-    )
-}
+// import React from 'react';
+// import styles from '@/components/styles/Favorites.module.scss';
+// import FavoritesItem from './FavoritesItem';
 
-export default Favorites
+// const Favorites = () => {
+//     return (
+//         <FavoritesItem />
+//     )
+// }
+
+// export default Favorites
