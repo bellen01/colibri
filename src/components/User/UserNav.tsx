@@ -3,11 +3,25 @@ import React, { useState } from 'react';
 import styles from '@/components/styles/UserNav.module.scss';
 import Link from 'next/link';
 import HeroHeading from '../General/HeroHeading';
+// import { logoutUser } from '@/app/posters/fetchFunctions';
+import { logoutUser } from '@/app/user/fetchFunctionsUser';
+import { useRouter } from 'next/navigation';
 
 const UserNav = () => {
     const [componentToShow, setComponentToShow] = useState("cart")
-
+    const router = useRouter();
     const user = "Jane Doe";
+
+    const logoutHandler = async () => {
+        try {
+            const response = await logoutUser();
+            if (response?.status === 200) {
+                router.push("/login");
+            }
+        } catch (error) {
+            console.log('error i logoutHandler', error);
+        }
+    }
 
     return (
         // <div className={styles.container}>
@@ -22,7 +36,7 @@ const UserNav = () => {
                 <Link href="/user/favorites">Favoriter</Link>
                 <Link href="/user/order-history">Tidigare beställningar</Link>
                 <Link href="/user/settings">Kontoinställningar</Link>
-                <Link href="#">Logga ut</Link>
+                <button onClick={logoutHandler}>Logga ut</button>
             </nav>
         </aside>
         /* </div> */

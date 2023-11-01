@@ -21,7 +21,17 @@
     width: 100%;
 }
 
-.formContainer input {
+// .formContainer input {
+//     width: 100%;
+//     border: none;
+//     border-bottom: .05em solid #777;
+//     min-height: 1.5em;
+//     // border-radius: .25em;
+//     padding: .5em;
+//     margin: .5rem 0;
+// }
+
+.input {
     width: 100%;
     border: none;
     border-bottom: .05em solid #777;
@@ -31,6 +41,15 @@
     margin: .5rem 0;
 }
 
+.input:focus {
+    outline-color: #512F9D; //TODO fundera på om färgen känns rätt
+}
+
+// .formContainer input:focus {
+//     // outline-color: #E169BF;
+//     outline-color: #512F9D; //TODO fundera på om färgen känns rätt
+// }
+
 .buttonContainer {
     width: 100%;
     display: flex;
@@ -39,7 +58,7 @@
 }
 
 .buttonContainer a {
-    width: 25%; //hör ihop med den eventuella ful-lösningen gällande width nedan.
+    width: 25%; //TODO hör ihop med den eventuella ful-lösningen gällande width nedan.
 }
 
 .cancelButton {
@@ -54,10 +73,50 @@
     border-radius: .25em;
     cursor: pointer;
     margin: 2rem 0;
-    width: 100%; //känns som en ful-lösning, se över hur och om jag vill göra på något annat sätt
+    width: 100%; //TODO känns som en ful-lösning, se över hur och om jag vill göra på något annat sätt
 }
 
 .cancelButton:hover {
     background-color: black;
     color: white;
+}
+
+.error {
+    color: rgb(225, 22, 22);
+    font-size: .9rem; //TODO bestäm font som ska gälla för alla felmeddelanden
+    text-align: end;
+}
+
+.inputError {
+    border: none;
+    border-bottom: 1px solid red;
+    width: 100%;
+    min-height: 1.5em;
+    padding: .5em;
+    margin: .5rem 0;
+}
+
+// .inputError {
+//     border: none;
+//     // outline: 1px solid red;
+//     border-bottom: 1px solid red;
+// }
+
+.inputError:focus {
+    outline-color: red; //TODO fundera på om jag vill ha rött eller samma färg som den har i vanliga fall
+}
+
+.icon {
+    color: rgb(225, 22, 22);
+    // border-bottom: .5em solid red;
+}
+
+.inputBox {
+    display: flex;
+    align-items: center;
+}
+
+.message {
+    text-align: center;
+    padding-top: 1rem;
 }

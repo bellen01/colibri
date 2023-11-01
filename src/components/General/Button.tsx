@@ -11,7 +11,7 @@ interface IButtonProps {
 
 const Button = ({ text, width, height, margin, onClick }: IButtonProps) => {
     return (
-        <button className={styles.button} onClick={onClick} style={{ width: `${width}`, height: `${height}`, margin: `${margin}` }}>{text}</button>
+        <button className={styles.button} onClick={onClick} style={{ width: `${width}`, height: `${height}`, margin: `${margin}` }} formNoValidate>{text}</button>
     )
 }
 

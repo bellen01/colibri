@@ -32,7 +32,8 @@ const Cart = () => {
     //     //     posterData.forEach(poster => { products.push({ ...poster.data() as Poster, id: posterData.id }) })
     //     // }
     // }
-
+    const date = new Date();
+    console.log('dagens datum', date);
 
     useEffect(() => {
         if (state) {
