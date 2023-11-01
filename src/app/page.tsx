@@ -1,18 +1,18 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import Header from '@/components/Header/Header'
-import Products from '@/components/Products/Products'
-import ProductInfo from '@/components/Products/ProductInfo'
+// import Products from '@/components/Products/Products'
+// import ProductInfo from '@/components/Products/ProductInfo'
 import { Metadata } from 'next'
 
-// export const metadata: Metadata = {
-//   title: 'Colibri',
-// }
+export const metadata: Metadata = {
+  title: 'Colibri',
+}
 
 export default function Home() {
   return (
     <section className={styles.section}>
-      <Products />
+      {/* <Products /> */}
       {/* <ProductInfo /> */}
       {/* <div className={styles.description}>
         <p>

@@ -2,6 +2,20 @@
     text-align: right;
 }
 
+.cartHeadings {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: .5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid black;
+}
+
+.cartIsEmpty {
+    text-align: center;
+}
+
+
+
 // .checkoutButton {
 //     width: 25%;
 //     height: 3rem;

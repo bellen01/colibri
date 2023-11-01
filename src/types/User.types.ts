@@ -1,17 +1,18 @@
 export type User = {
-    customerId: number,
+    id: string,
     firstName: string,
     lastName: string,
     address: Address;
-    email: string,
-    phone: string,
+    email?: string,
+    phone?: string,
     admin: boolean,
-    password: string,
+    password?: string,
+    authId: string,
 }
 
 export type Address = {
     streetName: string,
     streetNumber: string,
-    zipCode: number,
+    zipcode: number,
     city: string,
 }

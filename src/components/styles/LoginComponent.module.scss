@@ -1,5 +1,6 @@
 .h2 {
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 .loginContainer {
@@ -14,7 +15,48 @@
     width: 40%;
 }
 
-.inputContainer input {
+// .inputContainer input {
+//     width: 100%;
+//     border: none;
+//     border-bottom: .05em solid #777;
+//     min-height: 1.5em;
+//     // border-radius: .25em;
+//     padding: .5em;
+//     margin: .5rem 0;
+// }
+
+// .inputContainer p {
+//     text-align: center;
+// }
+
+.inputContainer a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.error {
+    color: rgb(225, 22, 22);
+    font-size: .9rem; //TODO bestäm font som ska gälla för alla felmeddelanden
+    text-align: end;
+}
+
+.message {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.icon {
+    color: rgb(225, 22, 22);
+    margin-left: .5rem;
+    // border-bottom: .5em solid red;
+}
+
+.inputBox {
+    display: flex;
+    align-items: center;
+}
+
+.input {
     width: 100%;
     border: none;
     border-bottom: .05em solid #777;
@@ -24,13 +66,12 @@
     margin: .5rem 0;
 }
 
-.inputContainer p {
-    text-align: center;
+.input:focus {
+    outline-color: #512F9D;
 }
 
-.inputContainer a {
-    font-weight: bold;
-    text-decoration: underline;
+.noAccountMessage {
+    text-align: center;
 }
 
 // .loginButton {
