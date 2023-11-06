@@ -186,18 +186,22 @@ const RegisterComponent = () => {
                         setTimeout(() => {
                             router.push("/user");
                         }, 1500);
+                    } else if (res.status === 409) {
+                        setMessage('Mailen är redan registrerad, använd en annan eller logga in nedan');
                     } else {
-                        setMessage('Något gick fel på vårt håll, vänligen försök senare igen.')
+                        const json = await res.json(); //TODO döp om variabeln
+                        console.log('error i register', json.message);
+                        setMessage('Något gick fel, vänligen försök senare igen.');
                     }
                     // const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                     // console.log(userCredential.user)
                     // dispatch(setUser(userCredential.user));
                 } catch (error: any) {
                     console.log('fel i registeruser i register component', error.message);
-                    setMessage('Något gick fel, vänligen försök senare igen')
+                    setMessage('Något gick fel, vänligen försök senare igen');
                 }
             } else {
-                setMessage('Vänligen fyll i din information i formuläret'); //TODO behöver denna?
+                setMessage('Vänligen fyll i din information i formuläret'); //TODO behövs denna?
             }
         }
         // else {
