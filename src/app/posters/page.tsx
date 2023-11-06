@@ -13,10 +13,24 @@ import Link from 'next/link';
 const Products = () => {
     const [posters, setPosters] = useState<Poster[]>()
 
+    const getPosters = async () => {
+        try {
+            const res = await getAllPosters();
+            if (res.status === 200) {
+                let postersData: Poster[];
+                postersData = await res.json();
+                setPosters(postersData);
+            }
+        } catch (error) {
+            console.log('error i getPosters', error);
+        }
+    }
+
 
     useEffect(() => {
+        getPosters()
         // getPosters().then((data) => setPosters(data));
-        getAllPosters().then((data) => setPosters(data));
+        // getAllPosters().then((data) => setPosters(data));
         // getAllPosters().then((data) => setPosters(data));
     }, []);
     // const posters = await getPosters();
@@ -27,10 +41,18 @@ const Products = () => {
         //     <HeroHeading heading={"Posters"} />
         //     <div className={styles.filterAndProductsContainer}>
         //         <ProductFilter />
-        <div className={styles.wrapper}>
-            {posters?.map((poster: Poster) => (
-                <Link href={`/poster/${poster.id}`} key={poster.id}><Product product={poster} /></Link>
-            ))}
+        <div>
+            {
+                !posters
+                    ?
+                    <p>Något gick fel</p>
+                    :
+                    <div className={styles.wrapper}>
+                        {posters?.map((poster: Poster) => (
+                            <Link href={`/poster/${poster.id}`} key={poster.id}><Product product={poster} /></Link>
+                        ))}
+                    </div>
+            }
         </div>
         //     </div>
         // </div>

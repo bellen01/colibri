@@ -18,26 +18,68 @@ import { User } from '@/types/User.types'
 //     }
 // }
 
+//getallposters innan jag skrev om den
+// export const getAllPosters = async (): Promise<Poster[] | undefined> => {
+//     // try {
+//     const res = await fetch("/api/posters", {
+//         next: {
+//             revalidate: 120
+//         }
+//     })
+//     if (res.status !== 200) {
+//         throw new Error('Something went wrong');
+//     } else {
+//         const data = await res.json();
+//         return data;
+//     }
+//     // } catch (error) {
+//     //     console.log('error in getAllPosters', error);
+//     // }
+// }
 
-export const getAllPosters = async (): Promise<Poster[] | undefined> => {
+export const getAllPosters = async () => {
     // try {
     const res = await fetch("/api/posters", {
         next: {
             revalidate: 120
         }
     })
-    if (res.status !== 200) {
-        throw new Error('Something went wrong');
-    } else {
-        const data = await res.json();
-        return data;
-    }
+
+    return res;
+
+    // if (res.status !== 200) {
+    //     throw new Error('Something went wrong');
+    // } else {
+    //     const data = await res.json();
+    //     return data;
+    // }
+
     // } catch (error) {
     //     console.log('error in getAllPosters', error);
     // }
 }
 
-export const getPostersByCategory = async (categoryid: number): Promise<Poster[] | undefined> => {
+//getposterbycategory innan jag skrev om den
+// export const getPostersByCategory = async (categoryid: number): Promise<Poster[] | undefined> => {
+//     // try {
+//     console.log('categoryid in getPostersByCategory fetch', categoryid, 3, "3")
+//     const res = await fetch(`/api/postersbycategory/${categoryid}`, {
+//         next: {
+//             revalidate: 120
+//         }
+//     })
+//     if (res.status !== 200) {
+//         throw new Error('Something went wrong');
+//     } else {
+//         const data = await res.json();
+//         return data;
+//     }
+//     // } catch (error) {
+//     //     console.log('error in fetching posters by category', error)
+//     // }
+// }
+
+export const getPostersByCategory = async (categoryid: number) => {
     // try {
     console.log('categoryid in getPostersByCategory fetch', categoryid, 3, "3")
     const res = await fetch(`/api/postersbycategory/${categoryid}`, {
@@ -45,30 +87,55 @@ export const getPostersByCategory = async (categoryid: number): Promise<Poster[]
             revalidate: 120
         }
     })
-    if (res.status !== 200) {
-        throw new Error('Something went wrong');
-    } else {
-        const data = await res.json();
-        return data;
-    }
+    return res;
+    // if (res.status !== 200) {
+    //     throw new Error('Something went wrong');
+    // } else {
+    //     const data = await res.json();
+    //     return data;
+    // }
     // } catch (error) {
     //     console.log('error in fetching posters by category', error)
     // }
 }
 
-export const getPosterById = async (id: string): Promise<Poster | undefined> => {
+//getPosterById innan jag skrev om den:
+// export const getPosterById = async (id: string): Promise<Poster | undefined> => {
+//     // try {
+//     const res = await fetch(`/api/posters/${id}`, {
+//         next: {
+//             revalidate: 120
+//         }
+//     })
+
+//     if (res.status !== 200) {
+//         throw new Error('Something went wrong');
+//     } else {
+//         const data = await res.json();
+//         return data;
+//     }
+//     // } catch (error) {
+//     //     console.log('error i getPosterById', error);
+//     // }
+// };
+
+export const getPosterById = async (id: string) => {
     // try {
+
     const res = await fetch(`/api/posters/${id}`, {
         next: {
             revalidate: 120
         }
     })
-    if (res.status !== 200) {
-        throw new Error('Something went wrong');
-    } else {
-        const data = await res.json();
-        return data;
-    }
+    return res;
+    // if (res.status !== 200) {
+    //     throw new Error('Something went wrong');
+    // } else {
+    //     const data = await res.json();
+    //     return data;
+    // }
+
+
     // } catch (error) {
     //     console.log('error i getPosterById', error);
     // }

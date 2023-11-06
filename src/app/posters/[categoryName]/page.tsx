@@ -48,11 +48,25 @@ const PostersByCategory = ({ params }: Params) => {
     //     }
     // }
 
+    const getPosterDataByCategory = async (id: number) => {
+        try {
+            const res = await getPostersByCategory(id);
+            if (res.status === 200) {
+                let posterData: Poster[];
+                posterData = await res.json();
+                setPosters(posterData);
+            }
+        } catch (error) {
+            console.log('error i postersbycategory', error);
+        }
+    }
+
     useEffect(() => {
         mapCategories();
         console.log('categoryid', categoryId)
         if (categoryId) {
-            getPostersByCategory(categoryId).then(result => setPosters(result));
+            getPosterDataByCategory(categoryId);
+            // getPostersByCategory(categoryId).then(result => setPosters(result));
         }
         // if (categoryId) {
         //     const result = getPosterByCategory(categoryId);
@@ -66,10 +80,18 @@ const PostersByCategory = ({ params }: Params) => {
         //     <HeroHeading heading={"Posters"} />
         //     <div className={styles.filterAndProductsContainer}>
         //         <ProductFilter />
-        <div className={styles.wrapper}>
-            {posters?.map((poster: Poster) => (
-                <Link href={`/poster/${poster.id}`} key={poster.id}><Product product={poster} /></Link>
-            ))}
+        <div>
+            {
+                !posters
+                    ?
+                    <p>Något gick fel</p>
+                    :
+                    <div className={styles.wrapper}>
+                        {posters?.map((poster: Poster) => (
+                            <Link href={`/poster/${poster.id}`} key={poster.id}><Product product={poster} /></Link>
+                        ))}
+                    </div>
+            }
         </div>
         //     </div>
         // </div>
