@@ -16,8 +16,22 @@ export default function UserLayout({
 }) {
     const [userData, setUserData] = useState<User>();
 
+    const getUserDetails = async () => {
+        try {
+            const res = await getUserData();
+            if (res.status === 200) {
+                let user: User[];
+                user = await res.json();
+                setUserData(user[0]);
+            }
+        } catch (error) {
+            console.log('error i settings page', error);
+        }
+    }
+
     useEffect(() => {
-        getUserData().then(data => { if (data) { setUserData(data[0]) } });
+        getUserDetails();
+        // getUserData().then(data => { if (data) { setUserData(data[0]) } });
     }, [])
 
     console.log('userdata i layout', userData);

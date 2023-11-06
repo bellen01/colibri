@@ -61,21 +61,46 @@ const ProductInfo = ({ params }: Params) => {
     //     }
     // };
 
+    //getPoster innan jag skrev om den:
+    // const getPoster = async (id: string) => {
+    //     try {
+    //         const posterData = await getPosterById(id);
+    //         setPoster(posterData);
+    //         if (posterData) {
+    //             const sizeOptions = posterData.priceAndSize.map(size => {
+    //                 return {
+    //                     label: `${size.size} - ${size.price} ${currency}`,
+    //                     value: size.size
+    //                 }
+    //             });
+    //             console.log("size", sizeOptions);
+    //             setSizeOptions(sizeOptions);
+    //         }
+    //         // setValue(sizeOptions[0]);
+    //     } catch (error) {
+    //         console.log('error i getPoster', error);
+    //     }
+    // };
+
     const getPoster = async (id: string) => {
         try {
-            const posterData = await getPosterById(id);
-            setPoster(posterData);
-            if (posterData) {
-                const sizeOptions = posterData.priceAndSize.map(size => {
-                    return {
-                        label: `${size.size} - ${size.price} ${currency}`,
-                        value: size.size
-                    }
-                });
-                console.log("size", sizeOptions);
-                setSizeOptions(sizeOptions);
+            const res = await getPosterById(id);
+            if (res.status === 200) {
+                let posterData: Poster;
+                posterData = await res.json();
+                setPoster(posterData);
+                if (posterData) {
+                    const sizeOptions = posterData.priceAndSize.map(size => {
+                        return {
+                            label: `${size.size} - ${size.price} ${currency}`,
+                            value: size.size
+                        }
+                    });
+                    console.log("size", sizeOptions);
+                    setSizeOptions(sizeOptions);
+                }
+                // setValue(sizeOptions[0]);
             }
-            // setValue(sizeOptions[0]);
         } catch (error) {
             console.log('error i getPoster', error);
         }

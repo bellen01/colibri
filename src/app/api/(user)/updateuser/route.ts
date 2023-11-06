@@ -130,12 +130,17 @@ export async function PATCH(request: NextRequest, response: NextResponse) {
     }
     console.log('newUserInformation i updateUser route', newUserInformation);
     if (newUserInformation) { //TODO lägga till check för null?
-        await updateDoc(userDoc, newUserInformation);
-        return NextResponse.json({
-            status: 200
-        })
+        try {
+            await updateDoc(userDoc, newUserInformation);
+            return NextResponse.json({ message: 'updated information saved' }, {
+                status: 200
+            })
+        } catch (error) {
+            console.log('error i updateuser route', error);
+            return NextResponse.json({ message: 'Something went wrong in updateDoc in updateuser route' }, { status: 400 })
+        }
     } else {
-        return NextResponse.json({
+        return NextResponse.json({ message: 'Something went wrong in update user route' }, {
             status: 400
         })
     }
