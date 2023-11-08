@@ -7,7 +7,7 @@ export async function middleware(request: NextRequest) {
     //client
     const isPublicPath = path === '/login' || path === '/register';
     //api
-    const isNotPublicAPI = path === '/api/getuserdata' || path === '/api/getorderhistory' || path === '/api/updateuser'; //gör samma för api-routes
+    const isNotPublicAPI = path === '/api/getuserdata' || path === '/api/getorderhistory' || path === '/api/updateuser' || path === '/api/getFavorites'; //TODO gör samma för api-routes
 
     const token = request.cookies.get('session')?.value || '';
 
@@ -58,6 +58,7 @@ export const config = {
         '/register',
         '/api/getuserdata',
         '/api/getorderhistory',
-        '/api/updateuser'
+        '/api/updateuser',
+        '/api/getFavorites'
     ]
 }

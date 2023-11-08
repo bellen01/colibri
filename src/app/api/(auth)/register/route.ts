@@ -198,6 +198,7 @@ export async function POST(
                 } catch (error) {
                     console.log('error i addDoc i register route', error);
                     const user = auth.currentUser;
+                    console.log('user i register route', user);
                     if (user) {
                         try {
                             await deleteUser(user);

@@ -81,7 +81,7 @@ export const getAllPosters = async () => {
 
 export const getPostersByCategory = async (categoryid: number) => {
     // try {
-    console.log('categoryid in getPostersByCategory fetch', categoryid, 3, "3")
+    // console.log('categoryid in getPostersByCategory fetch', categoryid, 3, "3")
     const res = await fetch(`/api/postersbycategory/${categoryid}`, {
         next: {
             revalidate: 120
@@ -140,6 +140,15 @@ export const getPosterById = async (id: string) => {
     //     console.log('error i getPosterById', error);
     // }
 };
+
+export const getFavorites = async () => {
+    const res = await fetch('/api/getFavorites', {
+        next: {
+            revalidate: 120
+        }
+    })
+    return res;
+}
 
 export const verifySession = async (token: string) => { //TODO flytta till annan fil
     try {

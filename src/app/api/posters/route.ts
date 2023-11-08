@@ -9,6 +9,7 @@ customInitApp();
 export async function GET() {
     try {
         const allPosterData = await getDocs(collection(db, 'posters'));
+        console.log('allposterdata i posters route', allPosterData);
         let posters: any = []
         allPosterData.forEach((poster) => {
             posters.push({ ...poster.data(), id: poster.id })
