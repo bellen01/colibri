@@ -6,7 +6,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Select from '@/components/Products/Select';
 import Button from '@/components/General/Button';
 import { Poster } from '@/types/Product.types';
-import { getPosterById } from '../../posters/fetchFunctions';
+import { addFavorite, getPosterById } from '../../posters/fetchFunctions';
 import { SelectOption } from '@/components/Products/Select';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/redux/features/cartSlice';
@@ -141,6 +141,24 @@ const ProductInfo = ({ params }: Params) => {
         }))
     }
 
+    const addToFavorites = async () => {
+        console.log('tryckt på hjärtat');
+        if (poster) {
+            try {
+                const res = await addFavorite(poster?.id);
+                if (res.status === 200) {
+                    console.log('favorit tillagd');
+                } else {
+                    console.log('Något gick fel i addFavorite i addToFavorites i poster id page');
+                }
+            } catch (error) {
+                console.log('error i addToFavorites i addFavorite i addToFavorites i poster id page', error);
+            }
+        } else {
+            console.log('Något gick fel i addToFavorites i poster id page');
+        }
+    }
+
 
     // const [value, setValue] = useState<typeof options[0] | undefined>(options[0])
 
@@ -169,9 +187,9 @@ const ProductInfo = ({ params }: Params) => {
                     <div className={styles.purchaseContainer}>
                         <Button onClick={addToCartHandler} text="Lägg i varukorg" width="100%" height={"4rem"} margin={"0"} />
                         {/* <button className={styles.purchaseButton}>Lägg i varukorg</button> */}
-                        <div className={styles.icon}>
+                        <button className={styles.icon} onClick={addToFavorites}>
                             <FontAwesomeIcon icon={faHeart} />
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>

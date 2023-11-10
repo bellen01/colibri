@@ -141,12 +141,38 @@ export const getPosterById = async (id: string) => {
     // }
 };
 
-export const getFavorites = async () => {
+export const getFavorites = async () => { //TODO flytta till annan fil?
     const res = await fetch('/api/getFavorites', {
         next: {
             revalidate: 120
         }
     })
+    return res;
+}
+
+export const updateFavorites = async (id: string) => {
+    const res = await fetch('/api/updateFavorites', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: id
+        })
+    })
+    return res;
+}
+
+export const addFavorite = async (id: string) => {
+    const res = await fetch('/api/addFavorite', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: id
+        })
+    });
     return res;
 }
 

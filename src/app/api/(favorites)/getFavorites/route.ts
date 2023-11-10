@@ -6,9 +6,7 @@ import { FieldPath, collection, doc, documentId, getDoc, getDocs, query, where }
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
-export async function GET(
-    request: Request, context: { params: { id: string } }
-) {
+export async function GET() {
     try {
         // const user = auth.currentUser; //TODO ger tillbaka null, varför? Fungerar i register route
         // console.log('user i favorites route', user);
