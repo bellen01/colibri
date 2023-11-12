@@ -7,7 +7,7 @@ export async function middleware(request: NextRequest) {
     //client
     const isPublicPath = path === '/login' || path === '/register';
     //api
-    const isNotPublicAPI = path === '/api/getuserdata' || path === '/api/getorderhistory' || path === '/api/updateuser' || path === '/api/getFavorites' || path === '/api/updateFavorites' || path === '/api/addFavorite'; //TODO gör samma för api-routes
+    const isNotPublicAPI = path === '/api/getuserdata' || path === '/api/getorderhistory' || path === '/api/updateuser' || path === '/api/getFavorites' || path === '/api/updateFavorites' || path === '/api/addFavorite' || path === '/api/getFavoritePostersIds'; //TODO gör samma för api-routes
 
     const token = request.cookies.get('session')?.value || '';
 
@@ -61,6 +61,7 @@ export const config = {
         '/api/updateuser',
         '/api/getFavorites',
         '/api/updateFavorites',
-        '/api/addFavorite'
+        '/api/addFavorite',
+        '/api/getFavoritePostersIds'
     ]
 }

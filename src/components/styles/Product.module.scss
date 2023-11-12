@@ -32,9 +32,20 @@
 
 .icon {
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .icon:hover {
     color: #E169BF;
     // color: white;
+}
+
+.iconClicked {
+    font-size: 1.5rem;
+    color: #E169BF;
+    cursor: pointer;
+}
+
+.iconClicked:hover {
+    color: black;
 }

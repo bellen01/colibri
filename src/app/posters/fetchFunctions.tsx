@@ -150,6 +150,15 @@ export const getFavorites = async () => { //TODO flytta till annan fil?
     return res;
 }
 
+export const getFavoritePostersIds = async () => {
+    const res = await fetch('/api/getFavoritePostersIds', {
+        next: {
+            revalidate: 120
+        }
+    })
+    return res;
+}
+
 export const updateFavorites = async (id: string) => {
     const res = await fetch('/api/updateFavorites', {
         method: 'PATCH',
