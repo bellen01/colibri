@@ -10,6 +10,8 @@ import { decreaseCartItem, increaseCartItem, removeItem } from '@/redux/features
 import Link from 'next/link';
 import { Poster } from '@/types/Product.types';
 import { getPosterById } from '@/app/posters/fetchFunctions';
+import { RootState } from '@/redux/store';
+import { deleteCartItem, decreaseItemInCart } from '@/app/cart/fetchFunctionsCart';
 
 interface ICartItemProps {
     productId: string,
@@ -20,18 +22,44 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
     const dispatch = useDispatch();
     const [productData, setProductData] = useState<Poster | undefined>()
     const [message, setMessage] = useState<string>();
+    const isUserLoggedIn = useSelector((state: RootState) => state.auth);
 
-    const handleRemove = () => {
+
+    const handleRemove = async () => {
         dispatch(removeItem(productDetails));
-    }
+        if (isUserLoggedIn.isLoggedIn) {
+            try {
+                const res = await deleteCartItem(productDetails.id, productDetails.priceAndSize, productDetails.quantity);
+                if (res.status === 200) {
+                    console.log('status 200');
+                } else {
+                    console.log('status inte 200');
+                }
+            } catch (error) {
+                console.log('error i deletecartitem i handleremove i cartitem', error);
+            }
+        }
+    };
 
-    const handleDecrease = () => {
+    const handleDecrease = async () => {
         dispatch(decreaseCartItem(productDetails));
-    }
+        if (isUserLoggedIn.isLoggedIn) {
+            try {
+                const res = await decreaseItemInCart(productDetails.id, productDetails.priceAndSize, productDetails.quantity);
+                if (res.status === 200) {
+                    console.log('status 200');
+                } else {
+                    console.log('status inte 200');
+                }
+            } catch (error) {
+                console.log('error i deletecartitem i handleremove i cartitem', error);
+            }
+        }
+    };
 
     const handleIncrease = () => {
         dispatch(increaseCartItem(productDetails));
-    }
+    };
 
     const getPoster = async () => {
         // let res;

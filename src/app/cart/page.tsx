@@ -9,6 +9,9 @@ import HeroHeading from '@/components/General/HeroHeading';
 import { CartProduct } from '@/types/CartProduct.types';
 import { getPosterById } from '../posters/fetchFunctions';
 import { Poster } from '@/types/Product.types';
+import { getCartItems } from './fetchFunctionsCart';
+import { Order } from '@/types/Order.types';
+import { Cart } from '../api/(cart)/getcartitems/route';
 
 const Cart = () => {
     const state = useSelector((state: RootState) => state.cart);
@@ -16,7 +19,10 @@ const Cart = () => {
     const [cartProducts, setCartProducts] = useState<CartProduct[] | undefined>();
     const [totalQuantityOfCartProducts, setTotalQuantityOfCartProducts] = useState<number>();
     const [totalValueOfCartProducts, setTotalValueOfCartProducts] = useState<number>();
+    const isUserLoggedIn = useSelector((state: RootState) => state.auth);
     const [products, setProducts] = useState<Poster[]>([]);
+
+    const [cartItemsDB, setCartItemsDB] = useState<Cart[]>();
 
     // const getCartProductsFromDB = () => {
     //     // if (state) {
@@ -32,10 +38,26 @@ const Cart = () => {
     //     //     posterData.forEach(poster => { products.push({ ...poster.data() as Poster, id: posterData.id }) })
     //     // }
     // }
+
+    const getCartItemsFromDB = async () => {
+        try {
+            const res = await getCartItems();
+            if (res.status === 200) {
+                let cartData: Cart[];
+                cartData = await res.json();
+                setCartItemsDB(cartData);
+            }
+        } catch (error) {
+            console.log('error i getCartItems i getCartItemsFromDB i cart page', error);
+        }
+        console.log('cartitemsDb', cartItemsDB);
+    }
+
     const date = new Date();
     console.log('dagens datum', date);
 
     useEffect(() => {
+        getCartItemsFromDB();
         if (state) {
             // state.products.map(product => getPosterById(product.id).then(result => setProducts(result)));
 
@@ -46,6 +68,8 @@ const Cart = () => {
             setTotalValueOfCartProducts(state.cartTotalAmount);
         }
     }, [state]);
+
+    console.log('cartitemsdb i useeffect', cartItemsDB);
 
     return (
         <div>

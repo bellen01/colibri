@@ -6,13 +6,15 @@ import Link from 'next/link';
 // import { signInWithEmailAndPassword } from 'firebase/auth';
 // import { auth } from '@/firebase/config';
 import { setUser } from '@/redux/features/userSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { isUserLoggedIn, logIn } from '@/redux/features/authSlice';
 // import { loginUser } from '@/app/posters/fetchFunctions';
 import { loginUser } from '@/app/user/fetchFunctionsUser';
 import { User } from '@/types/User.types';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { RootState } from '@/redux/store';
 
 type Errors = {
     email?: string,
@@ -21,9 +23,10 @@ type Errors = {
 
 const LoginComponent = () => {
     const router = useRouter();
+    const dispatch = useDispatch();
+    const isLoggedIn = useSelector((state: RootState) => state.auth);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const dispatch = useDispatch();
     const [userId, setUserId] = useState<string | undefined>()
     const [userData, setUserData] = useState<User | undefined>()
     const [errors, setErrors] = useState<Errors>({});
@@ -70,6 +73,7 @@ const LoginComponent = () => {
                 console.log('user i login component', res);
                 // setUserId(user.uid);
                 if (res.status === 200) {
+                    dispatch(isUserLoggedIn(true));
                     setMessage('Du är inloggad');
                     setTimeout(() => {
                         router.push("/user");
@@ -107,6 +111,8 @@ const LoginComponent = () => {
         //     setMessage('Formuläret har fel, vänligen åtgärda dom och försök igen');
         // }
     };
+
+    console.log('isloggedin', isLoggedIn.isLoggedIn);
 
     return (
         <form className={styles.loginContainer} onSubmit={handleLogin}>

@@ -6,6 +6,8 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Poster } from '@/types/Product.types';
 import { addFavorite, getFavoritePostersIds, updateFavorites } from '@/app/posters/fetchFunctions';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
 interface IProductProps {
     product: Poster | undefined;
@@ -14,38 +16,41 @@ interface IProductProps {
 
 const Product = ({ product, favoriteIds }: IProductProps) => {
     const [iconStyle, setIconStyle] = useState(styles.icon);
+    const isUserLoggedIn = useSelector((state: RootState) => state.auth);
     // const [favoriteIds, setFavoriteIds] = useState<string[]>();
 
     const updateFavoritePosters = async () => {
         console.log('tryckt på hjärtat');
-        if (product && iconStyle === styles.icon) {
-            try {
-                const res = await addFavorite(product.id);
-                if (res.status === 200) {
-                    console.log('favorit tillagd');
-                    setIconStyle(styles.iconClicked);
-                    // if (iconStyle === styles.icon) setIconStyle(styles.iconClicked);
-                    // else setIconStyle(styles.icon);
-                } else {
-                    console.log('Något gick fel i addFavorite i addToFavoritesposters i product page');
+        if (isUserLoggedIn.isLoggedIn) {
+            if (product && iconStyle === styles.icon) {
+                try {
+                    const res = await addFavorite(product.id);
+                    if (res.status === 200) {
+                        console.log('favorit tillagd');
+                        setIconStyle(styles.iconClicked);
+                        // if (iconStyle === styles.icon) setIconStyle(styles.iconClicked);
+                        // else setIconStyle(styles.icon);
+                    } else {
+                        console.log('Något gick fel i addFavorite i addToFavoritesposters i product page');
+                    }
+                } catch (error) {
+                    console.log('error i addToFavorites i addFavorite i addToFavoritesposters i product page', error);
                 }
-            } catch (error) {
-                console.log('error i addToFavorites i addFavorite i addToFavoritesposters i product page', error);
-            }
-        } else if (product && iconStyle === styles.iconClicked) {
-            try {
-                const res = await updateFavorites(product.id);
-                if (res.status === 200) {
-                    console.log('favorit borttagen');
-                    setIconStyle(styles.icon);
-                } else {
-                    console.log('status var inte 200 i updatefavorites i updatefavoriteposters i product');
+            } else if (product && iconStyle === styles.iconClicked) {
+                try {
+                    const res = await updateFavorites(product.id);
+                    if (res.status === 200) {
+                        console.log('favorit borttagen');
+                        setIconStyle(styles.icon);
+                    } else {
+                        console.log('status var inte 200 i updatefavorites i updatefavoriteposters i product');
+                    }
+                } catch (error) {
+                    console.log('error i updatefavorites i updatefavoriteposters i product page', error);
                 }
-            } catch (error) {
-                console.log('error i updatefavorites i updatefavoriteposters i product page', error);
+            } else {
+                console.log('Något gick fel i addToFavorites i product page');
             }
-        } else {
-            console.log('Något gick fel i addToFavorites i product page');
         }
     }
 

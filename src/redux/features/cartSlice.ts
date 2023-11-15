@@ -1,5 +1,8 @@
+import { addCartItem } from "@/app/cart/fetchFunctionsCart";
 import { CartProduct } from "@/types/CartProduct.types";
 import { createSlice, current } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 
 type InitialStateProducts = {
@@ -13,6 +16,21 @@ const initialState: InitialStateProducts = {
     cartTotalQuantity: 0,
     cartTotalAmount: 0
 };
+
+// const addItemToDB = async (id: string, priceAndSize: {}, quantity: number) => {
+//     try {
+//         const res = await addCartItem(id, priceAndSize, quantity);
+//         if (res.status === 200) {
+//             console.log('added to db in addItemToDB in cartSlice');
+//         } else {
+//             console.log('Något gick fel i addItemToDB i cartSlice');
+//         }
+//     } catch (error) {
+//         console.log('error i addCartItem i additemtodb i cartslice', error);
+//     }
+// };
+
+// const isUserLoggedIn = useSelector((state: RootState) => state.auth);
 
 export const cartSlice = createSlice({
     name: 'cart',
@@ -30,6 +48,9 @@ export const cartSlice = createSlice({
                 state.cartTotalQuantity += 1;
                 state.cartTotalAmount += action.payload.priceAndSize.price;
             }
+            // if (isUserLoggedIn) {
+            //     addItemToDB(action.payload.id, action.payload.priceAndSize, action.payload.quantity);
+            // }
         },
         removeItem: (state, action) => {
             console.log('action payload', action.payload)

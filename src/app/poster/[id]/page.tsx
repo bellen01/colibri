@@ -8,9 +8,11 @@ import Button from '@/components/General/Button';
 import { Poster } from '@/types/Product.types';
 import { addFavorite, getFavoritePostersIds, getPosterById, updateFavorites } from '../../posters/fetchFunctions';
 import { SelectOption } from '@/components/Products/Select';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '@/redux/features/cartSlice';
 import { useRouter } from 'next/navigation';
+import { addCartItem } from '@/app/cart/fetchFunctionsCart';
+import { RootState } from '@/redux/store';
 
 // const options = [
 //     // { label: "Välj storlek", value: 0 },
@@ -40,50 +42,11 @@ const ProductInfo = ({ params }: Params) => {
     const dispatch = useDispatch();
     const [sizeAndPrice, setSizeAndPrice] = useState<SizeAndPrice>()
     const router = useRouter();
+    const isUserLoggedIn = useSelector((state: RootState) => state.auth);
 
     const [iconStyle, setIconStyle] = useState(styles.icon);
     const [favoriteIds, setFavoriteIds] = useState<string[]>();
 
-
-    // const poster = await getPoster(params.id);
-    // const getPosterById = async () => {
-    //     try {
-    //         const posterData = await getPoster(params.id);
-    //         setPoster(posterData);
-    //         const sizeOptions = posterData.priceAndSize.map(size => {
-    //             return {
-    //                 label: `${size.size} - ${size.price} ${currency}`,
-    //                 value: size.size
-    //             }
-    //         });
-    //         console.log("size", sizeOptions);
-    //         setSizeOptions(sizeOptions);
-    //         // setValue(sizeOptions[0]);
-    //     } catch (error) {
-    //         console.log('error i getPosterById', error);
-    //     }
-    // };
-
-    //getPoster innan jag skrev om den:
-    // const getPoster = async (id: string) => {
-    //     try {
-    //         const posterData = await getPosterById(id);
-    //         setPoster(posterData);
-    //         if (posterData) {
-    //             const sizeOptions = posterData.priceAndSize.map(size => {
-    //                 return {
-    //                     label: `${size.size} - ${size.price} ${currency}`,
-    //                     value: size.size
-    //                 }
-    //             });
-    //             console.log("size", sizeOptions);
-    //             setSizeOptions(sizeOptions);
-    //         }
-    //         // setValue(sizeOptions[0]);
-    //     } catch (error) {
-    //         console.log('error i getPoster', error);
-    //     }
-    // };
 
     const getPoster = async (id: string) => {
         try {
@@ -113,13 +76,6 @@ const ProductInfo = ({ params }: Params) => {
     //     poster?.priceAndSize.map((sizeAndPrice) =)
     // }
 
-    useEffect(() => {
-        getPoster(params.id);
-        // getPosterById(params.id);
-        getPrice();
-        console.log('value', value);
-        console.log('sizeAndPrice', sizeAndPrice)
-    }, [value, sizeAndPrice]);
 
     const getPrice = () => {
         if (value) {
@@ -132,8 +88,9 @@ const ProductInfo = ({ params }: Params) => {
         }
     }
 
-    const addToCartHandler = () => {
+    const addToCartHandler = async () => {
         console.log('tryckt på lägg i varukorg')
+        console.log('isuserloggedin', isUserLoggedIn.isLoggedIn);
         // router.push('/cart');
         dispatch(addToCart({
             id: poster?.id,
@@ -142,80 +99,77 @@ const ProductInfo = ({ params }: Params) => {
             priceAndSize: sizeAndPrice,
             totalPrice: sizeAndPrice?.price
         }))
+        if (isUserLoggedIn.isLoggedIn && poster && sizeAndPrice) {
+            try {
+                const res = await addCartItem(poster.id, sizeAndPrice, 1);
+                if (res.status === 200) {
+                    console.log('added to db in addcartitem in addtocarthandler in poster id page');
+                } else {
+                    console.log('Något gick fel i addcartitem i poster id page');
+                }
+            } catch (error) {
+                console.log('error i addCartItem i addcartitem i poster id page', error);
+            }
+        }
     }
 
-    // const addToFavorites = async () => {
-    //     console.log('tryckt på hjärtat');
-    //     if (poster) {
-    //         try {
-    //             const res = await addFavorite(poster?.id);
-    //             if (res.status === 200) {
-    //                 console.log('favorit tillagd');
-    //                 if (iconStyle === styles.icon) setIconStyle(styles.iconClicked);
-    //                 else setIconStyle(styles.icon);
-    //             } else {
-    //                 console.log('Något gick fel i addFavorite i addToFavorites i poster id page');
-    //             }
-    //         } catch (error) {
-    //             console.log('error i addToFavorites i addFavorite i addToFavorites i poster id page', error);
-    //         }
-    //     } else {
-    //         console.log('Något gick fel i addToFavorites i poster id page');
-    //     }
-    // }
 
     const updateFavoritePosters = async () => {
         console.log('tryckt på hjärtat');
-        if (params.id && iconStyle === styles.icon) {
-            try {
-                const res = await addFavorite(params.id);
-                if (res.status === 200) {
-                    console.log('favorit tillagd');
-                    setIconStyle(styles.iconClicked);
-                } else {
-                    console.log('Något gick fel i addFavorite i updateFavoritesposters i product id page');
+        if (isUserLoggedIn.isLoggedIn) {
+            if (params.id && iconStyle === styles.icon) {
+                try {
+                    const res = await addFavorite(params.id);
+                    if (res.status === 200) {
+                        console.log('favorit tillagd');
+                        setIconStyle(styles.iconClicked);
+                    } else {
+                        console.log('Något gick fel i addFavorite i updateFavoritesposters i product id page');
+                    }
+                } catch (error) {
+                    console.log('error i addToFavorites i addFavorite i updateFavoritesposters i product id page', error);
                 }
-            } catch (error) {
-                console.log('error i addToFavorites i addFavorite i updateFavoritesposters i product id page', error);
-            }
-        } else if (params.id && iconStyle === styles.iconClicked) {
-            try {
-                const res = await updateFavorites(params.id);
-                if (res.status === 200) {
-                    console.log('favorit borttagen');
-                    setIconStyle(styles.icon);
-                } else {
-                    console.log('status var inte 200 i updatefavorites i updatefavoriteposters i product id page');
+            } else if (params.id && iconStyle === styles.iconClicked) {
+                try {
+                    const res = await updateFavorites(params.id);
+                    if (res.status === 200) {
+                        console.log('favorit borttagen');
+                        setIconStyle(styles.icon);
+                    } else {
+                        console.log('status var inte 200 i updatefavorites i updatefavoriteposters i product id page');
+                    }
+                } catch (error) {
+                    console.log('error i updatefavorites i updatefavoriteposters i product id page', error);
                 }
-            } catch (error) {
-                console.log('error i updatefavorites i updatefavoriteposters i product id page', error);
+            } else {
+                console.log('Något gick fel i updateFavoriteposters i product id page');
             }
-        } else {
-            console.log('Något gick fel i updateFavoriteposters i product id page');
         }
     }
 
 
     const checkIfPosterIsFavorite = async () => {
-        try {
-            const res = await getFavoritePostersIds();
-            if (res.status === 200) {
-                let ids: string[] = await res.json();
-                console.log('ids i product id page', ids);
-                if (ids.length !== 0) {
-                    // console.log('ids i product id page', ids);
-                    let isThisAFavoritePoster = ids.find(poster => poster === params?.id);
-                    if (isThisAFavoritePoster) {
-                        setIconStyle(styles.iconClicked);
+        if (isUserLoggedIn.isLoggedIn) {
+            try {
+                const res = await getFavoritePostersIds();
+                if (res.status === 200) {
+                    let ids: string[] = await res.json();
+                    console.log('ids i product id page', ids);
+                    if (ids.length !== 0) {
+                        // console.log('ids i product id page', ids);
+                        let isThisAFavoritePoster = ids.find(poster => poster === params?.id);
+                        if (isThisAFavoritePoster) {
+                            setIconStyle(styles.iconClicked);
+                        }
+                    } else {
+                        console.log('Det finns inga favoriter');
                     }
                 } else {
-                    console.log('Det finns inga favoriter');
+                    console.log('något gick fel i getfavoritepostersids i productinfo');
                 }
-            } else {
-                console.log('något gick fel');
+            } catch (error) {
+                console.log('error i trycatch i getFavoriteIds', error);
             }
-        } catch (error) {
-            console.log('error i trycatch i getFavoriteIds', error);
         }
     }
 
@@ -223,6 +177,7 @@ const ProductInfo = ({ params }: Params) => {
         getPoster(params.id);
         getPrice();
     }, [value, sizeAndPrice]);
+
 
     useEffect(() => {
         checkIfPosterIsFavorite();

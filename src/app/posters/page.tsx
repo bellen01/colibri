@@ -7,12 +7,16 @@ import HeroHeading from '@/components/General/HeroHeading';
 import { getAllPosters, getFavoritePostersIds } from './fetchFunctions';
 import { Poster } from '@/types/Product.types';
 import Link from 'next/link';
+import { isUserLoggedIn } from '@/redux/features/authSlice';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
 
 
 const Products = () => {
     const [posters, setPosters] = useState<Poster[]>()
     const [favoriteIds, setFavoriteIds] = useState<string[]>();
+    const isUserLoggedIn = useSelector((state: RootState) => state.auth);
 
     const getPosters = async () => {
         try {
@@ -28,22 +32,24 @@ const Products = () => {
     }
 
     const getFavoriteIds = async () => {
-        try {
-            const res = await getFavoritePostersIds();
-            if (res.status === 200) {
-                let ids: string[] = await res.json();
-                console.log('ids i product page', ids);
-                if (ids.length !== 0) {
+        if (isUserLoggedIn.isLoggedIn) {
+            try {
+                const res = await getFavoritePostersIds();
+                if (res.status === 200) {
+                    let ids: string[] = await res.json();
                     console.log('ids i product page', ids);
-                    setFavoriteIds(ids);
+                    if (ids.length !== 0) {
+                        // console.log('ids i product page', ids);
+                        setFavoriteIds(ids);
+                    } else {
+                        console.log('Det finns inga favoriter');
+                    }
                 } else {
-                    console.log('Det finns inga favoriter');
+                    console.log('något gick fel i getfavoritepostersids');
                 }
-            } else {
-                console.log('något gick fel');
+            } catch (error) {
+                console.log('error i trycatch i getFavoriteIds', error);
             }
-        } catch (error) {
-            console.log('error i trycatch i getFavoriteIds', error);
         }
     }
 

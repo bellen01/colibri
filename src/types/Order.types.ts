@@ -6,7 +6,7 @@ export type Order = {
     total_sum: number,
     items: OrderItem[],
     number_of_items: number,
-    createdAt: any,
+    createdAt?: any,
 }
 
 export type OrderItem = {

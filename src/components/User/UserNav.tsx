@@ -6,16 +6,20 @@ import HeroHeading from '../General/HeroHeading';
 // import { logoutUser } from '@/app/posters/fetchFunctions';
 import { logoutUser } from '@/app/user/fetchFunctionsUser';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { isUserLoggedIn, logIn } from '@/redux/features/authSlice';
 
 const UserNav = () => {
-    const [componentToShow, setComponentToShow] = useState("cart")
     const router = useRouter();
+    const dispatch = useDispatch();
+    const [componentToShow, setComponentToShow] = useState("cart")
     const user = "Jane Doe";
 
     const logoutHandler = async () => {
         try {
             const response = await logoutUser();
             if (response?.status === 200) {
+                dispatch(isUserLoggedIn(false));
                 router.push("/login");
             }
         } catch (error) {
