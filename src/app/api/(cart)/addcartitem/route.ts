@@ -37,8 +37,8 @@ export async function PATCH(request: Request) {
                 }
             } else if (poster) {
                 posters.forEach(poster => {
-                    if (poster.item_id === req.item_id) {
-                        poster.quantity += 1
+                    if (poster.item_id === req.item_id && poster.priceAndSize.size === req.priceAndSize.size) {
+                        poster.quantity += req.quantity
                     }
                 })
                 try {

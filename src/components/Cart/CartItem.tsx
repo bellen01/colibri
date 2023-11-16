@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { Poster } from '@/types/Product.types';
 import { getPosterById } from '@/app/posters/fetchFunctions';
 import { RootState } from '@/redux/store';
-import { deleteCartItem, decreaseItemInCart } from '@/app/cart/fetchFunctionsCart';
+import { deleteCartItem, decreaseItemInCart, addCartItem } from '@/app/cart/fetchFunctionsCart';
 
 interface ICartItemProps {
     productId: string,
@@ -45,7 +45,7 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
         dispatch(decreaseCartItem(productDetails));
         if (isUserLoggedIn.isLoggedIn) {
             try {
-                const res = await decreaseItemInCart(productDetails.id, productDetails.priceAndSize, productDetails.quantity);
+                const res = await decreaseItemInCart(productDetails.id, productDetails.priceAndSize, 1);
                 if (res.status === 200) {
                     console.log('status 200');
                 } else {
@@ -57,8 +57,20 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
         }
     };
 
-    const handleIncrease = () => {
+    const handleIncrease = async () => {
         dispatch(increaseCartItem(productDetails));
+        if (isUserLoggedIn.isLoggedIn) {
+            try {
+                const res = await addCartItem(productDetails.id, productDetails.priceAndSize, 1);
+                if (res.status === 200) {
+                    console.log('added to db in addcartitem in handleIncrease in cartitem');
+                } else {
+                    console.log('Något gick fel i addcartitem i cartitem');
+                }
+            } catch (error) {
+                console.log('error i addCartItem i handleincrease i cartitem', error);
+            }
+        }
     };
 
     const getPoster = async () => {
