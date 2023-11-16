@@ -4,7 +4,7 @@ import Product from '@/components/Products/Product';
 import styles from '@/components/styles/Products.module.scss';
 import ProductFilter from '@/components/Products/ProductFilter';
 import HeroHeading from '@/components/General/HeroHeading';
-import { getAllPosters } from './fetchFunctions';
+import { getAllPosters, getFavoritePostersIds } from './fetchFunctions';
 import { Poster } from '@/types/Product.types';
 import Link from 'next/link';
 
@@ -12,6 +12,7 @@ import Link from 'next/link';
 
 const Products = () => {
     const [posters, setPosters] = useState<Poster[]>()
+    const [favoriteIds, setFavoriteIds] = useState<string[]>();
 
     const getPosters = async () => {
         try {
@@ -26,9 +27,30 @@ const Products = () => {
         }
     }
 
+    const getFavoriteIds = async () => {
+        try {
+            const res = await getFavoritePostersIds();
+            if (res.status === 200) {
+                let ids: string[] = await res.json();
+                console.log('ids i product page', ids);
+                if (ids.length !== 0) {
+                    console.log('ids i product page', ids);
+                    setFavoriteIds(ids);
+                } else {
+                    console.log('Det finns inga favoriter');
+                }
+            } else {
+                console.log('något gick fel');
+            }
+        } catch (error) {
+            console.log('error i trycatch i getFavoriteIds', error);
+        }
+    }
+
 
     useEffect(() => {
         getPosters()
+        getFavoriteIds();
         // getPosters().then((data) => setPosters(data));
         // getAllPosters().then((data) => setPosters(data));
         // getAllPosters().then((data) => setPosters(data));
@@ -49,7 +71,7 @@ const Products = () => {
                     :
                     <div className={styles.wrapper}>
                         {posters?.map((poster: Poster) => (
-                            <Link href={`/poster/${poster.id}`} key={poster.id}><Product product={poster} /></Link>
+                            <Product product={poster} favoriteIds={favoriteIds} key={poster.id} />
                         ))}
                     </div>
             }

@@ -6,7 +6,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Select from '@/components/Products/Select';
 import Button from '@/components/General/Button';
 import { Poster } from '@/types/Product.types';
-import { getPosterById } from '../../posters/fetchFunctions';
+import { addFavorite, getFavoritePostersIds, getPosterById, updateFavorites } from '../../posters/fetchFunctions';
 import { SelectOption } from '@/components/Products/Select';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/redux/features/cartSlice';
@@ -40,6 +40,9 @@ const ProductInfo = ({ params }: Params) => {
     const dispatch = useDispatch();
     const [sizeAndPrice, setSizeAndPrice] = useState<SizeAndPrice>()
     const router = useRouter();
+
+    const [iconStyle, setIconStyle] = useState(styles.icon);
+    const [favoriteIds, setFavoriteIds] = useState<string[]>();
 
 
     // const poster = await getPoster(params.id);
@@ -141,6 +144,90 @@ const ProductInfo = ({ params }: Params) => {
         }))
     }
 
+    // const addToFavorites = async () => {
+    //     console.log('tryckt på hjärtat');
+    //     if (poster) {
+    //         try {
+    //             const res = await addFavorite(poster?.id);
+    //             if (res.status === 200) {
+    //                 console.log('favorit tillagd');
+    //                 if (iconStyle === styles.icon) setIconStyle(styles.iconClicked);
+    //                 else setIconStyle(styles.icon);
+    //             } else {
+    //                 console.log('Något gick fel i addFavorite i addToFavorites i poster id page');
+    //             }
+    //         } catch (error) {
+    //             console.log('error i addToFavorites i addFavorite i addToFavorites i poster id page', error);
+    //         }
+    //     } else {
+    //         console.log('Något gick fel i addToFavorites i poster id page');
+    //     }
+    // }
+
+    const updateFavoritePosters = async () => {
+        console.log('tryckt på hjärtat');
+        if (params.id && iconStyle === styles.icon) {
+            try {
+                const res = await addFavorite(params.id);
+                if (res.status === 200) {
+                    console.log('favorit tillagd');
+                    setIconStyle(styles.iconClicked);
+                } else {
+                    console.log('Något gick fel i addFavorite i updateFavoritesposters i product id page');
+                }
+            } catch (error) {
+                console.log('error i addToFavorites i addFavorite i updateFavoritesposters i product id page', error);
+            }
+        } else if (params.id && iconStyle === styles.iconClicked) {
+            try {
+                const res = await updateFavorites(params.id);
+                if (res.status === 200) {
+                    console.log('favorit borttagen');
+                    setIconStyle(styles.icon);
+                } else {
+                    console.log('status var inte 200 i updatefavorites i updatefavoriteposters i product id page');
+                }
+            } catch (error) {
+                console.log('error i updatefavorites i updatefavoriteposters i product id page', error);
+            }
+        } else {
+            console.log('Något gick fel i updateFavoriteposters i product id page');
+        }
+    }
+
+
+    const checkIfPosterIsFavorite = async () => {
+        try {
+            const res = await getFavoritePostersIds();
+            if (res.status === 200) {
+                let ids: string[] = await res.json();
+                console.log('ids i product id page', ids);
+                if (ids.length !== 0) {
+                    // console.log('ids i product id page', ids);
+                    let isThisAFavoritePoster = ids.find(poster => poster === params?.id);
+                    if (isThisAFavoritePoster) {
+                        setIconStyle(styles.iconClicked);
+                    }
+                } else {
+                    console.log('Det finns inga favoriter');
+                }
+            } else {
+                console.log('något gick fel');
+            }
+        } catch (error) {
+            console.log('error i trycatch i getFavoriteIds', error);
+        }
+    }
+
+    useEffect(() => {
+        getPoster(params.id);
+        getPrice();
+    }, [value, sizeAndPrice]);
+
+    useEffect(() => {
+        checkIfPosterIsFavorite();
+    }, []);
+
 
     // const [value, setValue] = useState<typeof options[0] | undefined>(options[0])
 
@@ -169,9 +256,9 @@ const ProductInfo = ({ params }: Params) => {
                     <div className={styles.purchaseContainer}>
                         <Button onClick={addToCartHandler} text="Lägg i varukorg" width="100%" height={"4rem"} margin={"0"} />
                         {/* <button className={styles.purchaseButton}>Lägg i varukorg</button> */}
-                        <div className={styles.icon}>
+                        <button className={iconStyle} onClick={updateFavoritePosters}>
                             <FontAwesomeIcon icon={faHeart} />
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>

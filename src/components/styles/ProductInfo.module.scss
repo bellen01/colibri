@@ -35,6 +35,7 @@
     align-items: center;
     border: 1px solid #E169BF;
     color: #E169BF;
+    background-color: white;
     // border: 1px solid #8F67BB;
     // color: #8F67BB;
     cursor: pointer;
@@ -45,6 +46,27 @@
 .icon:hover {
     background-color: #E169BF;
     color: white;
+}
+
+.iconClicked {
+    font-size: 1.5rem;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E169BF;
+    color: white;
+    background-color: #E169BF;
+    // border: 1px solid #8F67BB;
+    // color: #8F67BB;
+    cursor: pointer;
+    border-radius: .25em;
+    // margin: 2rem 0;
+}
+
+.iconClicked:hover {
+    background-color: white;
+    color: #E169BF;
 }
 
 // .product {

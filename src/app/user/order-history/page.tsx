@@ -33,6 +33,7 @@ const OrderHistory = () => {
         } catch (error) {
             console.log('error i getOrders i orderHistory page', error);
         }
+        console.log('orderDetails', orderDetails)
     }
 
     useEffect(() => {
