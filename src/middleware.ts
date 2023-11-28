@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
     const isNotPublicAPI = path === '/api/getuserdata' || path === '/api/getorderhistory' || path === '/api/updateuser'
         || path === '/api/getFavorites' || path === '/api/updateFavorites' || path === '/api/addFavorite'
         || path === '/api/getFavoritePostersIds' || path === '/api/getcartitems' || path === '/api/addcartitem'
-        || path === '/api/deletecartitem' || path === '/api/decreasecartitem'; //TODO gör samma för api-routes
+        || path === '/api/deletecartitem' || path === '/api/decreasecartitem' || path === '/api/updatecartitems';
 
     const token = request.cookies.get('session')?.value || '';
 
@@ -69,6 +69,7 @@ export const config = {
         '/api/getcartitems',
         '/api/addcartitem',
         '/api/deletecartitem',
-        '/api/decreasecartitem'
+        '/api/decreasecartitem',
+        '/api/updatecartitems'
     ]
 }

@@ -7,7 +7,7 @@ import HeroHeading from '../General/HeroHeading';
 import { logoutUser } from '@/app/user/fetchFunctionsUser';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
-import { isUserLoggedIn, logIn } from '@/redux/features/authSlice';
+import { isUserLoggedIn, logIn, logOut } from '@/redux/features/authSlice';
 
 const UserNav = () => {
     const router = useRouter();
@@ -19,7 +19,8 @@ const UserNav = () => {
         try {
             const response = await logoutUser();
             if (response?.status === 200) {
-                dispatch(isUserLoggedIn(false));
+                // dispatch(isUserLoggedIn(false));
+                dispatch(logOut(false));
                 router.push("/login");
             }
         } catch (error) {

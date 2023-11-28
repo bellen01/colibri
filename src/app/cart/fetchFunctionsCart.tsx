@@ -1,3 +1,4 @@
+import { CartProduct } from "@/types/CartProduct.types";
 
 
 export const getCartItems = async () => {
@@ -20,6 +21,19 @@ export const addCartItem = async (id: string, priceAndSize: {}, quantity: number
             item_id: id,
             priceAndSize: priceAndSize,
             quantity: quantity,
+        })
+    });
+    return res;
+}
+
+export const updateCartItems = async (products: CartProduct[]) => {
+    const res = await fetch('/api/updatecartitems', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            products
         })
     });
     return res;

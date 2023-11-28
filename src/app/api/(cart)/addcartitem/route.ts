@@ -24,57 +24,46 @@ export async function PATCH(request: Request) {
                 posters = posters.concat(cartItem.data().items);
             })
             console.log('documentId', documentId);
-            poster = posters.find(poster => poster.item_id === req.item_id && poster.priceAndSize.size === req.priceAndSize.size)
-            if (!poster) {
-                try {
-                    await updateDoc(doc(db, 'cart', documentId), {
-                        items: arrayUnion(req)
-                    });
-                    return NextResponse.json({ message: 'cartitem added' }, { status: 200 });
-                } catch (error) {
-                    console.log('error i updatedoc i addcartitem route', error);
-                    return NextResponse.json({ message: 'Something went wrong in updatedoc i addcartitem route' }, { status: 400 });
-                }
-            } else if (poster) {
-                posters.forEach(poster => {
-                    if (poster.item_id === req.item_id && poster.priceAndSize.size === req.priceAndSize.size) {
-                        poster.quantity += req.quantity
+            if (documentId) {
+                poster = posters.find(poster => poster.item_id === req.item_id && poster.priceAndSize.size === req.priceAndSize.size)
+                if (!poster) {
+                    try {
+                        await updateDoc(doc(db, 'cart', documentId), {
+                            items: arrayUnion(req)
+                        });
+                        return NextResponse.json({ message: 'cartitem added' }, { status: 200 });
+                    } catch (error) {
+                        console.log('error i updatedoc i addcartitem route', error);
+                        return NextResponse.json({ message: 'Something went wrong in updatedoc i addcartitem route' }, { status: 400 });
                     }
-                })
-                try {
-                    await updateDoc(doc(db, 'cart', documentId), {
-                        items: posters
+                } else if (poster) {
+                    posters.forEach(poster => {
+                        if (poster.item_id === req.item_id && poster.priceAndSize.size === req.priceAndSize.size) {
+                            poster.quantity += req.quantity
+                        }
                     })
-                    return NextResponse.json({ message: 'uppdaterat i decreasecartitem' }, { status: 200 });
+                    try {
+                        await updateDoc(doc(db, 'cart', documentId), {
+                            items: posters
+                        })
+                        return NextResponse.json({ message: 'uppdaterat i decreasecartitem' }, { status: 200 });
+                    } catch (error) {
+                        console.log('error i updatedoc i decreasecartitem', error);
+                        return NextResponse.json({ message: 'error i decreasecartitem' }, { status: 400 });
+                    }
+                }
+            } else {
+                try {
+                    await addDoc(collection(db, 'cart'), {
+                        userId: userId,
+                        items: [req]
+                    });
+                    return NextResponse.json({ message: 'cartItem added to new document' }, { status: 200 });
                 } catch (error) {
-                    console.log('error i updatedoc i decreasecartitem', error);
-                    return NextResponse.json({ message: 'error i decreasecartitem' }, { status: 400 });
+                    console.log('error i addDoc i addcartitem route', error);
+                    return NextResponse.json({ message: 'Something went wrong in adddoc i addcartitem route' }, { status: 400 });
                 }
             }
-
-            // if (documentId) {
-            //     console.log('i try catch efter documentid')
-            //     try {
-            //         await updateDoc(doc(db, 'cart', documentId), {
-            //             items: arrayUnion(req)
-            //         });
-            //         return NextResponse.json({ message: 'cartitem added' }, { status: 200 });
-            //     } catch (error) {
-            //         console.log('error i updatedoc i addcartitem route', error);
-            //         return NextResponse.json({ message: 'Something went wrong in updatedoc i addcartitem route' }, { status: 400 });
-            //     }
-            // } else {
-            //     try {
-            //         await addDoc(collection(db, 'cart'), {
-            //             userId: userId,
-            //             items: [req]
-            //         });
-            //         return NextResponse.json({ message: 'cartItem added to new document' }, { status: 200 });
-            //     } catch (error) {
-            //         console.log('error i addDoc i addcartitem route', error);
-            //         return NextResponse.json({ message: 'Something went wrong in adddoc i addcartitem route' }, { status: 400 });
-            //     }
-            // }
         } else {
             console.log('inget cartData i addcartitem route');
             return NextResponse.json({ message: 'Something went wrong in adddoc i addcartitem route' }, { status: 400 });

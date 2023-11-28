@@ -14,9 +14,19 @@ const LoginMenu = () => {
     const state = useSelector((state: RootState) => state.cart);
     const [productsInCart, setProductsInCart] = useState<number>();
 
+    const getTotalQuantity = () => {
+        let quantity = 0;
+        if (state.products) {
+            state.products.forEach((product) => {
+                quantity += product.quantity;
+            })
+        }
+        setProductsInCart(quantity);
+    }
+
     useEffect(() => {
         if (state) {
-            setProductsInCart(state.cartTotalQuantity);
+            getTotalQuantity();
         }
     }, [state]);
 

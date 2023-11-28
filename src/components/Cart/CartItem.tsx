@@ -74,7 +74,6 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
     };
 
     const getPoster = async () => {
-        // let res;
         try {
             const res = await getPosterById(productId);
             console.log('res i cartItem', res);
@@ -92,7 +91,6 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
             console.log('error i getPoster', error);
             setMessage('Något gick fel, vänligen försök senare igen');
         }
-        // console.log('productData i cartitem', productData);
     }
 
     useEffect(() => {
@@ -104,40 +102,40 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
 
     return (
         <div>
-            {
+            {/* {
                 !productData ?
                     <p>{message}</p>
-                    :
-                    <div className={styles.cartItemWrapper}>
-                        <div className={styles.imageContainer}>
+                    : */}
+            <div className={styles.cartItemWrapper}>
+                <div className={styles.imageContainer}>
+                    <Link href={`/poster/${productId}`}>
+                        <img src={productData?.image.img} alt={productData?.image.altText} className={styles.image} />
+                    </Link>
+                </div>
+                <div className={styles.info}>
+                    <div className={styles.information}>
+                        <div className={styles.productDetails}>
                             <Link href={`/poster/${productId}`}>
-                                <img src={productData?.image.img} alt={productData?.image.altText} className={styles.image} />
+                                <p>{productData?.title}</p>
+                                <p>{productDetails.priceAndSize.size}</p>
                             </Link>
                         </div>
-                        <div className={styles.info}>
-                            <div className={styles.information}>
-                                <div className={styles.productDetails}>
-                                    <Link href={`/poster/${productId}`}>
-                                        <p>{productData?.title}</p>
-                                        <p>{productDetails.priceAndSize.size}</p>
-                                    </Link>
-                                </div>
-                                <div className={styles.changeQuantityContainer}>
-                                    <FontAwesomeIcon icon={faMinus} onClick={handleDecrease} />
-                                    <p>{productDetails.quantity}</p>
-                                    <FontAwesomeIcon icon={faPlus} onClick={handleIncrease} />
-                                </div>
-                                <div>
-                                    <p>{productDetails.totalPrice}</p>
-                                </div>
-                                <div>
-                                    {/* <button className={styles.button}><FontAwesomeIcon icon={faPen} /></button> */}
-                                    <button className={styles.button}><FontAwesomeIcon icon={faTrashCan} onClick={handleRemove} /></button>
-                                </div>
-                            </div>
+                        <div className={styles.changeQuantityContainer}>
+                            <FontAwesomeIcon icon={faMinus} onClick={handleDecrease} />
+                            <p>{productDetails.quantity}</p>
+                            <FontAwesomeIcon icon={faPlus} onClick={handleIncrease} />
+                        </div>
+                        <div>
+                            <p>{productDetails.quantity * productDetails.priceAndSize.price}</p>
+                        </div>
+                        <div>
+                            {/* <button className={styles.button}><FontAwesomeIcon icon={faPen} /></button> */}
+                            <button className={styles.button}><FontAwesomeIcon icon={faTrashCan} onClick={handleRemove} /></button>
                         </div>
                     </div>
-            }
+                </div>
+            </div>
+            {/* } */}
         </div>
     )
 }

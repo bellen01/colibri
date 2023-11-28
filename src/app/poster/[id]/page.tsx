@@ -94,10 +94,8 @@ const ProductInfo = ({ params }: Params) => {
         // router.push('/cart');
         dispatch(addToCart({
             id: poster?.id,
-            title: poster?.title,
             quantity: 1,
-            priceAndSize: sizeAndPrice,
-            totalPrice: sizeAndPrice?.price
+            priceAndSize: sizeAndPrice
         }))
         if (isUserLoggedIn.isLoggedIn && poster && sizeAndPrice) {
             try {
@@ -188,38 +186,31 @@ const ProductInfo = ({ params }: Params) => {
 
     return (
         <div className={styles.productInfoWrapper}>
-            {/* <div className={styles.productInfo}> */}
-            {/* <img src="/3827_2.jpg" alt="temporär produktbild" className={styles.image} /> */}
             <img src={poster?.image.img} alt={poster?.image.altText} className={styles.image} />
             <div className={styles.infoWrapper}>
                 <div className={styles.info}>
                     <div className={styles.heading}>
                         <h2>{poster?.title}</h2>
-                        {/* <h2>Title</h2> */}
                     </div>
                     <p>{poster?.description}</p>
-                    {/* <p>Info</p> */}
                     <p>{price}</p>
                 </div>
                 <div>
                     <div className={styles.select}>
-                        {/* <Select3 options={poster?.priceAndSize} value={value2}  /> */}
-
                         <Select options={sizeOptions} value={value} onChange={option => setValue(option)} />
                     </div>
-                    {/* <Select2 options={options} value={value} onChange={option => setValue(option)} /> */}
                     <div className={styles.purchaseContainer}>
                         <Button onClick={addToCartHandler} text="Lägg i varukorg" width="100%" height={"4rem"} margin={"0"} />
-                        {/* <button className={styles.purchaseButton}>Lägg i varukorg</button> */}
                         <button className={iconStyle} onClick={updateFavoritePosters}>
                             <FontAwesomeIcon icon={faHeart} />
                         </button>
                     </div>
                 </div>
             </div>
-            {/* </div> */}
         </div>
     )
 }
 
 export default ProductInfo
+
+
