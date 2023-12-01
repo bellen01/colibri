@@ -121,9 +121,11 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
                             </Link>
                         </div>
                         <div className={styles.changeQuantityContainer}>
-                            <FontAwesomeIcon icon={faMinus} onClick={handleDecrease} />
-                            <p>{productDetails.quantity}</p>
-                            <FontAwesomeIcon icon={faPlus} onClick={handleIncrease} />
+                            <div className={styles.quantityContainer}>
+                                <FontAwesomeIcon icon={faMinus} onClick={handleDecrease} className={styles.icon} />
+                                <p>{productDetails.quantity}</p>
+                                <FontAwesomeIcon icon={faPlus} onClick={handleIncrease} className={styles.icon} />
+                            </div>
                         </div>
                         <div>
                             <p>{productDetails.quantity * productDetails.priceAndSize.price}</p>

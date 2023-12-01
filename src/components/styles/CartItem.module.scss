@@ -27,7 +27,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .information>* {
@@ -48,6 +47,15 @@
 
 .changeQuantityContainer {
     display: flex;
+    align-items: flex-start;
+}
+
+.quantityContainer {
+    display: flex;
     align-items: center;
     gap: .5rem;
+}
+
+.icon {
+    cursor: pointer;
 }
