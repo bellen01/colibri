@@ -3,18 +3,17 @@ import React, { useEffect, useState } from 'react';
 import styles from '@/components/styles/LoginComponent.module.scss';
 import Button from '../General/Button';
 import Link from 'next/link';
-// import { signInWithEmailAndPassword } from 'firebase/auth';
-// import { auth } from '@/firebase/config';
-import { setUser } from '@/redux/features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { isUserLoggedIn, logIn } from '@/redux/features/authSlice';
-// import { loginUser } from '@/app/posters/fetchFunctions';
 import { getUserData, loginUser } from '@/app/user/fetchFunctionsUser';
 import { User } from '@/types/User.types';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { RootState } from '@/redux/store';
+import { getCartItems, updateCartItems } from '@/app/cart/fetchFunctionsCart';
+import { PosterData } from '@/app/api/(cart)/getcartitems/route';
+import { addToCart, updateCartFromDB } from '@/redux/features/cartSlice';
 
 type Errors = {
     email?: string,
@@ -27,9 +26,11 @@ const LoginComponent = () => {
     const isLoggedIn = useSelector((state: RootState) => state.auth);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [userData, setUserData] = useState<User | undefined>()
     const [errors, setErrors] = useState<Errors>({});
     const [message, setMessage] = useState<string>()
+    const state = useSelector((state: RootState) => state.cart);
+    console.log('state i cart', state);
+    const [changedStateWithDBProducts, setChangedStateWithDBProducts] = useState(false);
 
     const validateForm = () => {
         let errors: Errors = {} as Errors;
@@ -60,12 +61,60 @@ const LoginComponent = () => {
             if (res.status === 200) {
                 let user: User[];
                 user = await res.json();
-                // setUserData(user[0]);
                 dispatch(logIn(user[0].firstName));
             }
         } catch (error) {
             console.log('error i settings page', error);
         }
+    }
+
+    const getCartItemsFromDB = async () => {
+        try {
+            const res = await getCartItems();
+            if (res.status === 200) {
+                let cartDataFromDB: PosterData[];
+                cartDataFromDB = await res.json();
+                if (cartDataFromDB) {
+                    console.log('cartDataFromDB', cartDataFromDB);
+                    console.log('state.products', state.products);
+                    cartDataFromDB.forEach(poster => {
+                        let posterFound = state.products.find(product => product.id === poster.item_id && product.priceAndSize.size === poster.priceAndSize.size);
+                        if (posterFound == undefined) {
+                            dispatch(addToCart(poster));
+                            setChangedStateWithDBProducts(true);
+                        } else if (posterFound && poster.quantity !== posterFound.quantity) {
+                            if (poster.quantity < posterFound.quantity) {
+                                dispatch(updateCartFromDB(poster));
+                                setChangedStateWithDBProducts(true);
+                            } else {
+                                setChangedStateWithDBProducts(true);
+                            }
+                        }
+                    })
+                    state.products.forEach(poster => {
+                        let foundPosterInDB = cartDataFromDB.find(product => product.item_id === poster.id && product.priceAndSize.size === poster.priceAndSize.size);
+                        if (foundPosterInDB == undefined) {
+                            setChangedStateWithDBProducts(true);
+                        }
+                    })
+                }
+                // setCartItemsDB(cartData);
+            }
+        } catch (error) {
+            console.log('error i getCartItems i getCartItemsFromDB i cart page', error);
+        }
+    }
+
+    const updateDBWithReduxState = async () => {
+        try {
+            const res = await updateCartItems(state.products);
+            if (res.status === 200) {
+                console.log('status 200', res);
+            }
+        } catch (error) {
+            console.log('error i replacecartitems i getcartitems i cart page', error);
+        }
+        setChangedStateWithDBProducts(false);
     }
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -79,6 +128,7 @@ const LoginComponent = () => {
                     console.log('inloggad');
                     getUserDetails();
                     dispatch(isUserLoggedIn(true));
+                    getCartItemsFromDB();
                     setMessage('Du är inloggad');
                     setTimeout(() => {
                         router.push("/user");
@@ -95,6 +145,13 @@ const LoginComponent = () => {
     };
 
     console.log('isloggedin', isLoggedIn.isLoggedIn);
+
+    useEffect(() => {
+        if (changedStateWithDBProducts) {
+            console.log('changedStateWithDBProducts', changedStateWithDBProducts);
+            updateDBWithReduxState();
+        }
+    }, [changedStateWithDBProducts]);
 
     return (
         <form className={styles.loginContainer} onSubmit={handleLogin}>
