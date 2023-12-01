@@ -5,18 +5,17 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import Button from '@/components/General/Button';
-// import { getUserData } from '@/app/posters/fetchFunctions';
 import { getUserData } from '../fetchFunctionsUser';
 import { User } from '@/types/User.types';
-// import ChangeCustomerInformation from '@/components/AccountSettings/ChangeCustomerInformation';
-// import ChangePassword from '@/components/AccountSettings/ChangePassword';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import { logIn } from '@/redux/features/authSlice';
 
 
 const CustomerInformation = () => {
-    const [editInformation, setEditInformation] = useState(false);
-    const [changePassword, setChangePassword] = useState(false);
-    const [componentToShow, setComponentToShow] = useState("customerInformation");
     const [userData, setUserData] = useState<User>();
+    const userName = useSelector((state: RootState) => state.auth.name);
+    const dispatch = useDispatch();
 
     const getUserDetails = async () => {
         try {
@@ -25,6 +24,7 @@ const CustomerInformation = () => {
                 let user: User[];
                 user = await res.json();
                 setUserData(user[0]);
+                dispatch(logIn(user[0].firstName));
             }
         } catch (error) {
             console.log('error i settings page', error);
@@ -32,9 +32,9 @@ const CustomerInformation = () => {
     }
 
     useEffect(() => {
+        console.log('username i state', userName);
         if (userData == undefined) {
             getUserDetails();
-            // getUserData().then(data => { if (data) { setUserData(data[0]) } });
         }
     }, [userData]);
 

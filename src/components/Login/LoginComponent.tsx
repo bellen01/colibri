@@ -9,7 +9,7 @@ import { setUser } from '@/redux/features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { isUserLoggedIn, logIn } from '@/redux/features/authSlice';
 // import { loginUser } from '@/app/posters/fetchFunctions';
-import { loginUser } from '@/app/user/fetchFunctionsUser';
+import { getUserData, loginUser } from '@/app/user/fetchFunctionsUser';
 import { User } from '@/types/User.types';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,8 +27,7 @@ const LoginComponent = () => {
     const isLoggedIn = useSelector((state: RootState) => state.auth);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userId, setUserId] = useState<string | undefined>()
-    const [userData, setUserData] = useState<User | undefined>()
+    // const [userData, setUserData] = useState<User | undefined>()
     const [errors, setErrors] = useState<Errors>({});
     const [message, setMessage] = useState<string>()
 
@@ -48,7 +47,6 @@ const LoginComponent = () => {
         }
 
         setErrors(errors);
-        console.log('errors i validateform i login', errors);
         if (Object.keys(errors).length === 0) {
             return true;
         } else {
@@ -56,23 +54,30 @@ const LoginComponent = () => {
         }
     }
 
+    const getUserDetails = async () => {
+        try {
+            const res = await getUserData();
+            if (res.status === 200) {
+                let user: User[];
+                user = await res.json();
+                // setUserData(user[0]);
+                dispatch(logIn(user[0].firstName));
+            }
+        } catch (error) {
+            console.log('error i settings page', error);
+        }
+    }
+
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setMessage("");
-        console.log('email', email);
-        console.log('password', password);
         const isFormValid = validateForm();
         if (isFormValid) {
-
-            // if (email && password) {
-            console.log('email i if', email);
-            console.log('password i if', password);
             try {
-                console.log('i try catch i login component')
                 const res = await loginUser(email, password);
-                console.log('user i login component', res);
-                // setUserId(user.uid);
                 if (res.status === 200) {
+                    console.log('inloggad');
+                    getUserDetails();
                     dispatch(isUserLoggedIn(true));
                     setMessage('Du är inloggad');
                     setTimeout(() => {
@@ -84,32 +89,9 @@ const LoginComponent = () => {
                     setMessage('Något gick fel, vänligen försök senare igen');
                 }
             } catch (error) {
-                console.log('fel i login', error)
                 setMessage('Något gick fel med login-uppgifterna, vänligen försök senare igen');
             }
-            //     try {
-            //         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            //         console.log('user', userCredential.user);
-            //         // dispatch(setUser(userCredential.user));
-            //     } catch (error) {
-            //         console.log('fel i signinwithemailandpassword', error);
-            //     }
         }
-        // else {
-        //     setMessage('Vänligen fyll i email och lösenord')
-        // }
-        // if (userId) {
-        //     try {
-        //         const userData = await getUserData(userId);
-        //         console.log('userData från db baserat på authid', userData)
-        //     } catch (error) {
-        //         console.log('error i login i getuserdata', error)
-        //     }
-        // }
-        // }
-        // else {
-        //     setMessage('Formuläret har fel, vänligen åtgärda dom och försök igen');
-        // }
     };
 
     console.log('isloggedin', isLoggedIn.isLoggedIn);
@@ -153,7 +135,6 @@ const LoginComponent = () => {
                 <p className={styles.error}>{errors?.password}</p>
                 <p className={styles.message}>{message}</p>
                 <Button text="Logga in" />
-                {/* <button className={styles.loginButton}>Logga in</button> */}
                 <p className={styles.noAccountMessage}>Har du inget konto ännu? Registrera dig <Link href="/register">här</Link></p>
             </div>
         </form>

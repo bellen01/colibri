@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 // import { getUserData } from "../posters/fetchFunctions";
 import { getUserData } from "./fetchFunctionsUser";
 import { User } from "@/types/User.types";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const user = "Jane Smith";
 
@@ -14,34 +16,36 @@ export default function UserLayout({
 }: {
     children: React.ReactNode
 }) {
-    const [userData, setUserData] = useState<User>();
+    // const [userData, setUserData] = useState<User>();
+    const userName = useSelector((state: RootState) => state.auth.name);
 
-    const getUserDetails = async () => {
-        try {
-            const res = await getUserData();
-            if (res.status === 200) {
-                let user: User[];
-                user = await res.json();
-                setUserData(user[0]);
-            }
-        } catch (error) {
-            console.log('error i settings page', error);
-        }
-    }
+    // const getUserDetails = async () => {
+    //     try {
+    //         const res = await getUserData();
+    //         if (res.status === 200) {
+    //             let user: User[];
+    //             user = await res.json();
+    //             setUserData(user[0]);
+    //         }
+    //     } catch (error) {
+    //         console.log('error i settings page', error);
+    //     }
+    // }
 
     useEffect(() => {
-        getUserDetails();
-        // getUserData().then(data => { if (data) { setUserData(data[0]) } });
-    }, [])
+        console.log('username', userName);
+        // getUserDetails();
+    }, [userName])
 
-    console.log('userdata i layout', userData);
+    // console.log('userdata i layout', userData);
 
     return (
         <section>
             {/* Include shared UI here e.g. a header or sidebar */}
             {/* <HeroHeading heading={`Välkommen ${user}`} /> */}
             {/* <HeroHeading heading={`Välkommen ${userData?.firstName} ${userData?.lastName}`} /> */}
-            <HeroHeading heading={`Välkommen ${userData?.firstName}`} />
+            {/* <HeroHeading heading={`Välkommen ${userData?.firstName}`} /> */}
+            <HeroHeading heading={`Välkommen ${userName}`} />
             <div className={styles.menuAndChildrenContainer}>
                 <UserNav />
                 {children}

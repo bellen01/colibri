@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type InitialStateAuth = {
     isLoggedIn: boolean,
+    name: string,
 };
 
 const initialState: InitialStateAuth = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    name: "",
 };
 
 export const authSlice = createSlice({
@@ -17,9 +19,10 @@ export const authSlice = createSlice({
         },
         logIn: (state, action) => {
             state.isLoggedIn = true;
+            state.name = action.payload;
         },
-        logOut: (state, action) => {
-            state.isLoggedIn = action.payload;
+        logOut: () => {
+            return initialState;
         }
     },
 });

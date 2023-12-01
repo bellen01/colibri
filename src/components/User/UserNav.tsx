@@ -20,8 +20,8 @@ const UserNav = () => {
             const response = await logoutUser();
             if (response?.status === 200) {
                 // dispatch(isUserLoggedIn(false));
-                dispatch(logOut(false));
                 router.push("/login");
+                dispatch(logOut());
             }
         } catch (error) {
             console.log('error i logoutHandler', error);
