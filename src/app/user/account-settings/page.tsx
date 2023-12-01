@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import styles from '@/components/styles/CustomerInformation.module.scss';
+import styles from '@/components/styles/AccountSettings.module.scss';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ import { RootState } from '@/redux/store';
 import { logIn } from '@/redux/features/authSlice';
 
 
-const CustomerInformation = () => {
+const AccountSettings = () => {
     const [userData, setUserData] = useState<User>();
     const userName = useSelector((state: RootState) => state.auth.name);
     const dispatch = useDispatch();
@@ -87,4 +87,4 @@ const CustomerInformation = () => {
     )
 }
 
-export default CustomerInformation
+export default AccountSettings

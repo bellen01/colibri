@@ -1,27 +1,8 @@
 import { Order } from "@/types/Order.types"
-import { UserInformation } from "./settings/edit-information/page";
+import { UserInformation } from "./account-settings/edit-information/page";
 import { User } from '@/types/User.types'
 import { RegUser } from "@/components/Register/RegisterComponent";
 
-//getorderhistory innan jag skrev om den:
-// export const getOrderHistory = async (): Promise<Order[] | undefined> => {
-//     // try {
-//     const res = await fetch('/api/getorderhistory', {
-//         next: {
-//             revalidate: 120
-//         }
-//     });
-//     if (res.status !== 200) {
-//         throw new Error('Something went wrong');
-//     } else {
-//         const data = await res.json();
-//         console.log('data in getorderhistory', data);
-//         return data;
-//     }
-//     // } catch (error) {
-//     //     console.log('error in getorderhistory', error);
-//     // }
-// }
 
 export const getOrderHistory = async () => {
     // try {
@@ -148,19 +129,6 @@ export const registerUser = async (userData: RegUser) => {
     // }
 }
 
-//logoutuser innan jag skrev om den
-// export async function logoutUser() {
-//     const response = await fetch('/api/logout', {
-//         method: 'POST',
-//     });
-//     if (response.status === 200) {
-//         console.log('logout successful');
-//         return response;
-//     } else {
-//         throw new Error('Someting went wrong with logout');
-//     };
-// };
-
 export async function logoutUser() {
     const response = await fetch('/api/logout', {
         method: 'POST',
@@ -174,25 +142,6 @@ export async function logoutUser() {
     // };
 };
 
-//getuserdata innan jag skrev om den:
-// export const getUserData = async (): Promise<User[] | undefined> => {
-//     // try {
-//     const res = await fetch('/api/getuserdata', {
-//         next: {
-//             revalidate: 120
-//         }
-//     });
-//     if (res.status !== 200) {
-//         throw new Error('Someting went wrong')
-//     } else {
-//         const data = await res.json();
-//         console.log('data in getuserdata', data);
-//         return data;
-//     }
-//     // } catch (error) {
-//     //     console.log('error in getuserdata', error);
-//     // }
-// }
 
 export const getUserData = async () => {
     // try {

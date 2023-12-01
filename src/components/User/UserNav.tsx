@@ -40,7 +40,7 @@ const UserNav = () => {
                 {/* </div> */}
                 <Link href="/user/favorites">Favoriter</Link>
                 <Link href="/user/order-history">Tidigare beställningar</Link>
-                <Link href="/user/settings">Kontoinställningar</Link>
+                <Link href="/user/account-settings">Kontoinställningar</Link>
                 <button onClick={logoutHandler}>Logga ut</button>
             </nav>
         </aside>
