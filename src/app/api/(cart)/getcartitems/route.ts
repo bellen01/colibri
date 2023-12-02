@@ -27,11 +27,9 @@ export async function GET(request: Request) {
     try {
         const headersList = headers();
         const userId = headersList.get('userid');
-        console.log('userId in getuserdata route', userId);
         const findCartItems = query(collection(db, 'cart'), where('userId', '==', userId));
         const cartData = await getDocs(findCartItems);
 
-        console.log('cartData', cartData);
         let cartDetails: CartData[] = [];
         let items: PosterDetails[] = [];
 
@@ -40,15 +38,11 @@ export async function GET(request: Request) {
             cartItem.data().items.forEach((item: PosterData) => {
                 items.push({ ...item, id: item.item_id })
             })
-            // items = cartItem.data().items; //TODO ändra så att item_id är id
         });
-        console.log('items', items);
-        console.log('cartDetails', cartDetails);
         return NextResponse.json(items, {
             status: 200
         });
     } catch (error) {
-        console.log('error i getCartItems route', error);
         return NextResponse.json({ message: 'Something went wrong in getCartItems route' }, { status: 400 });
     }
 }

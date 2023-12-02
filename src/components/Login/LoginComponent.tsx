@@ -75,8 +75,6 @@ const LoginComponent = () => {
                 let cartDataFromDB: PosterData[];
                 cartDataFromDB = await res.json();
                 if (cartDataFromDB) {
-                    console.log('cartDataFromDB', cartDataFromDB);
-                    console.log('state.products', state.products);
                     cartDataFromDB.forEach(poster => {
                         let posterFound = state.products.find(product => product.id === poster.item_id && product.priceAndSize.size === poster.priceAndSize.size);
                         if (posterFound == undefined) {
