@@ -1,10 +1,10 @@
-import React from 'react';
-import styles from '@/components/styles/Checkout.module.scss';
+// import React from 'react';
+// import styles from '@/components/styles/Checkout.module.scss';
 
-const Checkout = () => {
-    return (
-        <div>Checkout</div>
-    )
-}
+// const Checkout = () => {
+//     return (
+//         <div>Checkout</div>
+//     )
+// }
 
-export default Checkout
+// export default Checkout

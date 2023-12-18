@@ -1,0 +1,107 @@
+.radiobuttons {
+    appearance: none;
+    box-sizing: border-box;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    padding: 0;
+    border: 2px solid var(--radio-border-color);
+    border-radius: 50%;
+    background-color: transparent;
+    outline: none;
+    // color: black;
+}
+
+.radiobuttons:not(:disabled):checked {
+    border-color: var(--radio-checked-color);
+    background-color: var(--radio-checked-color);
+    background-clip: content-box;
+    padding: 2px;
+    background-image: radial-gradient(circle,
+            var(--radio-checked-color) 0%,
+            var(--radio-checked-color) 50%,
+            transparent 60%,
+            transparent 100%);
+}
+
+.radiobuttons:focus-visible {
+    background-color: var(--radio-hover-color);
+    outline: 2px solid var(--radio-hover-color);
+}
+
+.radiobuttons:disabled {
+    background-color: var(--radio-disabled-bg-color);
+}
+
+.radiobuttons:disabled:checked {
+    background-image: radial-gradient(circle,
+            var(--radio-border-color) 0%,
+            var(--radio-border-color) 50%,
+            transparent 50%,
+            transparent 100%);
+}
+
+// @media (hover: hover) {
+//     .radiobuttons:not(:disabled):hover {
+//         background-color: var(--radio-hover-color);
+//         // outline: 6px solid var(--radio-hover-color);
+//     }
+// }
+
+// .radiobuttons:focus-within {
+//     color: black;
+// }
+
+.heading {
+    margin-bottom: .5rem;
+}
+
+.paymentContainer {
+    padding: 1rem;
+    border: 1px solid lightgray;
+}
+
+// .label {
+//     padding: .5rem;
+// }
+
+.divider {
+    border: 1px solid light gray;
+    width: 95%;
+    margin: auto;
+}
+
+.invoice {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid gray;
+    padding-bottom: 1rem;
+}
+
+.card {
+    margin-top: 1rem;
+}
+
+// input[type='radio'] {
+
+// }
+
+.radioButtonContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+.totalSumContainer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.totalSum {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.buttonContainer {
+    text-align: center;
+}

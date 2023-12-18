@@ -1,0 +1,44 @@
+.inputContainer {
+    width: 100%;
+    // border-top: 1px solid gray;
+    // padding: 0 1rem;
+}
+
+.inputBox {
+    display: flex;
+    align-items: center;
+}
+
+.flexInputFields {
+    display: flex;
+    gap: 1rem;
+}
+
+.flexInputFields>* {
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    border: .05em solid #777;
+    border-radius: .25em;
+    // border-bottom: .05em solid #777;
+    min-height: 1.5em;
+    // border-radius: .25em;
+    padding: 1em;
+    margin: .5rem 0;
+}
+
+.input:focus {
+    outline-color: #512F9D;
+}
+
+.error {
+    color: rgb(225, 22, 22);
+    font-size: .9rem; //TODO bestäm font som ska gälla för alla felmeddelanden
+    text-align: end;
+}
+
+.information {
+    margin-top: 1rem;
+}

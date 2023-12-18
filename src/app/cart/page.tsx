@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import HeroHeading from '@/components/General/HeroHeading';
 import { CartProduct } from '@/types/CartProduct.types';
+import Link from 'next/link';
 
 const Cart = () => {
     const state = useSelector((state: RootState) => state.cart);
@@ -50,7 +51,7 @@ const Cart = () => {
                             <p>Antal produkter: {totalQuantity}</p>
                             <p>Total summa: {totalValue} kr</p>
                         </div>
-                        <Button text={"Till kassan"} width={"25%"} />
+                        <Link href='/checkout'><Button text={"Till kassan"} width={"25%"} /></Link>
                     </div>
                 </div>
                 :

@@ -39,6 +39,22 @@ export const updateCartItems = async (products: CartProduct[]) => {
     return res;
 }
 
+export const saveOrder = async (products: CartProduct[], totalQuantity: number, totalPrice: number, paymentMethod: string) => {
+    const res = await fetch('/api/saveorder', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            products,
+            number_of_items: totalQuantity,
+            total_sum: totalPrice,
+            paymentMethod,
+        })
+    });
+    return res;
+}
+
 export const deleteCartItem = async (id: string, priceAndSize: {}, quantity: number,) => {
     const res = await fetch('/api/deletecartitem', {
         method: 'PATCH',

@@ -1,0 +1,74 @@
+.quantityAndPriceContainer {
+    display: flex;
+    justify-content: right;
+    text-align: right;
+}
+
+// .totalPriceContainer {
+//     width: 25%;
+//     padding-bottom: .5rem;
+//     border-bottom: 1px solid lightgray;
+// }
+
+.cartIsEmpty {
+    text-align: center;
+}
+
+// .test {
+//     width: 50%;
+// }
+
+// .test {
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+// }
+
+.purchaseHeading {
+    margin: 1rem 0;
+}
+
+.completePurchaseContainer {
+    width: 100%;
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+}
+
+.purchaseContainer {
+    width: 50%;
+}
+
+.customerInformation {
+    // display: flex;
+    // justify-content: center;
+}
+
+.completePurchaseHeading {
+    text-align: center;
+}
+
+.totalSumContainer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.totalSum {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.buttonContainer {
+    text-align: center;
+}
+
+.productContainer {
+    width: 70%;
+    margin: auto;
+}
+
+// .totalPriceContainer {
+//     border-bottom: 1px solid lightgray;
+//     padding-bottom: .6rem;
+//     margin-bottom: .5rem;
+// }

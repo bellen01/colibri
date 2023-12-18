@@ -19,8 +19,8 @@ export async function GET(
         //     posters.push({ ...poster.data() as Poster, id: poster.id })
         // })
 
-        console.log('context params', context.params);
-        console.log(poster)
+        // console.log('context params', context.params);
+        // console.log(poster)
 
         return NextResponse.json(poster, {
             status: 200

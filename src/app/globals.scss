@@ -1,4 +1,8 @@
 :root {
+  --radio-border-color: #40B1A6;
+  --radio-checked-color: #40B1A6;
+  --radio-hover-color: #40B1A6;
+  --rado-disabled-bg-color: white;
   // --max-width: 1100px;
   // --border-radius: 12px;
   // --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -99,6 +103,12 @@ h2 {
 h3 {
   font-size: 1.2rem;
   font-family: var(--font-montserrat);
+}
+
+h4 {
+  font-size: 1rem;
+  font-family: var(--font-montserrat);
+  // font-weight: bold;
 }
 
 p,

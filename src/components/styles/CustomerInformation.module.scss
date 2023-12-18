@@ -32,6 +32,10 @@
     margin-bottom: 1.5rem;
 }
 
+.customerInformationContainer {
+    margin-bottom: 1rem;
+}
+
 .pairs {
     display: flex;
     gap: .5rem;
@@ -42,4 +46,17 @@
     border: none;
     cursor: pointer;
     margin: .5rem 0;
+}
+
+.heading {
+    margin-bottom: .5rem;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.informationContainer2 {
+    padding: 1rem;
+    border: 1px solid lightgray;
 }

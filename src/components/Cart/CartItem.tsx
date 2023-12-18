@@ -23,7 +23,7 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
     const [productData, setProductData] = useState<Poster | undefined>()
     const [message, setMessage] = useState<string>();
     const isUserLoggedIn = useSelector((state: RootState) => state.auth);
-
+    const currency = "kr";
 
     const handleRemove = async () => {
         dispatch(removeItem(productDetails));
@@ -128,7 +128,7 @@ const CartItem = ({ productId, productDetails }: ICartItemProps) => {
                             </div>
                         </div>
                         <div>
-                            <p>{productDetails.quantity * productDetails.priceAndSize.price}</p>
+                            <p>{productDetails.quantity * productDetails.priceAndSize.price} {currency}</p>
                         </div>
                         <div>
                             {/* <button className={styles.button}><FontAwesomeIcon icon={faPen} /></button> */}

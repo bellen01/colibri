@@ -11,7 +11,8 @@ export async function middleware(request: NextRequest) {
     const isNotPublicAPI = path === '/api/getuserdata' || path === '/api/getorderhistory' || path === '/api/updateuser'
         || path === '/api/getFavorites' || path === '/api/updateFavorites' || path === '/api/addFavorite'
         || path === '/api/getFavoritePostersIds' || path === '/api/getcartitems' || path === '/api/addcartitem'
-        || path === '/api/deletecartitem' || path === '/api/decreasecartitem' || path === '/api/updatecartitems';
+        || path === '/api/deletecartitem' || path === '/api/decreasecartitem' || path === '/api/updatecartitems'
+        || path === '/api/saveorder';
 
     const token = request.cookies.get('session')?.value || '';
 
@@ -75,6 +76,7 @@ export const config = {
         '/api/addcartitem',
         '/api/deletecartitem',
         '/api/decreasecartitem',
-        '/api/updatecartitems'
+        '/api/updatecartitems',
+        '/api/saveorder',
     ]
 }
