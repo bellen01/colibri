@@ -7,6 +7,7 @@ export type Order = {
     items: OrderItem[],
     number_of_items: number,
     createdAt?: any,
+    paymentMethod?: string,
 }
 
 export type OrderItem = {

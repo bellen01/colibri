@@ -14,6 +14,7 @@ interface IOrderHistoryProps {
 
 const OrderHistory = () => {
     const [orderDetails, setOrderDetails] = useState<Order[]>()
+    const [message, setMessage] = useState<string>()
     // const today = new Date();
     // const year = today.getFullYear();
     // const month = today.getMonth() + 1;
@@ -29,6 +30,8 @@ const OrderHistory = () => {
                 let orderData: Order[];
                 orderData = await res.json();
                 setOrderDetails(orderData);
+            } else {
+                setMessage('Du har inte gjort några ordrar ännu');
             }
         } catch (error) {
             console.log('error i getOrders i orderHistory page', error);
@@ -48,21 +51,25 @@ const OrderHistory = () => {
 
     return (
         <div>
-            {
+            {/* {
                 !orderDetails
                     ?
                     <p>Laddar...</p>
-                    :
-                    <div className={styles.wrapper}>
-                        <div className={styles.info}>
-                            <div className={styles.information}>
-                                <h2 className={styles.h2}>Tidigare beställningar</h2>
-                                {
-                                    orderDetails?.map((order) => (
-                                        <OrderItem orderDetails={order} key={order.id} />
-                                    ))
-                                }
-                                {/* <div className={styles.headings}>
+                    : */}
+            <div className={styles.wrapper}>
+                <div className={styles.info}>
+                    <div className={styles.information}>
+                        <h2 className={styles.h2}>Tidigare beställningar</h2>
+                        {
+                            orderDetails?.length === 0
+                                ?
+                                <p>{message}</p>
+                                :
+                                orderDetails?.map((order) => (
+                                    <OrderItem orderDetails={order} key={order.id} />
+                                ))
+                        }
+                        {/* <div className={styles.headings}>
                         <div>
                         <p>Ordernummer:</p>
                         <p>nummer</p>
@@ -84,12 +91,12 @@ const OrderHistory = () => {
                             <p>Pris</p>
                             <img src="/3827_2.jpg" alt="temporär bild" className={styles.image} />
                         </div> */}
-                                {/* <button className={styles.button}><FontAwesomeIcon icon={faPen} /></button>
+                        {/* <button className={styles.button}><FontAwesomeIcon icon={faPen} /></button>
                         <button className={styles.button}><FontAwesomeIcon icon={faTrashCan} /></button> */}
-                            </div>
-                        </div>
                     </div>
-            }
+                </div>
+            </div>
+            {/* } */}
         </div>
     )
 }

@@ -21,11 +21,13 @@ export async function GET(request: Request) {
             const date = order.data().createdAt.toDate().toDateString();
             const date2 = order.data().createdAt.seconds;
             const date3 = order.data().createdAt.toDate();
+            const date4 = order.data().createdAt.nanoseconds;
             console.log('timestamp', timestamp);
-            console.log('date', date);
-            console.log('date2', date2);
-            console.log('date3', date3)
-            orderDetails.push({ ...order.data() as Order, id: order.id, createdAt: date2 });
+            console.log('date to string', date);
+            console.log('date2 seconds', date2);
+            console.log('date3 todate', date3)
+            console.log('date4 nanoseconds', date4)
+            orderDetails.push({ ...order.data() as Order, id: order.id, createdAt: date3 });
         });
 
         console.log('orderDetails', orderDetails)
