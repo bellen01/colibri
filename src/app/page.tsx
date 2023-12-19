@@ -4,6 +4,7 @@ import Header from '@/components/Header/Header'
 // import Products from '@/components/Products/Products'
 // import ProductInfo from '@/components/Products/ProductInfo'
 import { Metadata } from 'next'
+import ImageSlider from '@/components/Homepage/ImageSlider'
 
 export const metadata: Metadata = {
   title: 'Colibri',
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <section className={styles.section}>
+      <ImageSlider />
       {/* <Products /> */}
       {/* <ProductInfo /> */}
       {/* <div className={styles.description}>
