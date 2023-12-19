@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from '@/components/styles/UserNav.module.scss';
 import Link from 'next/link';
-import { logoutUser } from '@/app/user/fetchFunctionsUser';
+import { logoutUser } from '@/app/(sharedLayout)/user/fetchFunctionsUser';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { logOut } from '@/redux/features/authSlice';

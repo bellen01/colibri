@@ -4,7 +4,7 @@ import styles from '@/components/styles/Product.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Poster } from '@/types/Product.types';
-import { addFavorite, getFavoritePostersIds, updateFavorites } from '@/app/posters/fetchFunctions';
+import { addFavorite, getFavoritePostersIds, updateFavorites } from '@/app/(sharedLayout)/posters/fetchFunctions';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';

@@ -5,13 +5,13 @@ import Button from '../General/Button';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { isUserLoggedIn, logIn } from '@/redux/features/authSlice';
-import { getUserData, loginUser } from '@/app/user/fetchFunctionsUser';
+import { getUserData, loginUser } from '@/app/(sharedLayout)/user/fetchFunctionsUser';
 import { User } from '@/types/User.types';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { RootState } from '@/redux/store';
-import { getCartItems, updateCartItems } from '@/app/cart/fetchFunctionsCart';
+import { getCartItems, updateCartItems } from '@/app/(sharedLayout)/cart/fetchFunctionsCart';
 import { PosterData } from '@/app/api/(cart)/getcartitems/route';
 import { addToCart, updateCartFromDB } from '@/redux/features/cartSlice';
 

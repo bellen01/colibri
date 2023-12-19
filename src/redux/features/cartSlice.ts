@@ -1,4 +1,4 @@
-import { addCartItem } from "@/app/cart/fetchFunctionsCart";
+import { addCartItem } from "@/app/(sharedLayout)/cart/fetchFunctionsCart";
 import { CartProduct } from "@/types/CartProduct.types";
 import { createSlice, current } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";

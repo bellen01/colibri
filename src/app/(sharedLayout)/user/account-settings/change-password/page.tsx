@@ -20,7 +20,7 @@ const ChangePassword = ({ setState }: IChangePasswordProps) => {
                     {/* <button className={styles.loginButton}>Byt lösenord</button> */}
                 </form>
                 <div className={styles.buttonContainer}>
-                    <Link href="/user/settings"><button className={styles.cancelButton}>Avbryt</button></Link>
+                    <Link href="/user/account-settings"><button className={styles.cancelButton}>Avbryt</button></Link>
                     <Button text={"Byt lösenord"} width={"30%"} />
                 </div>
             </div>

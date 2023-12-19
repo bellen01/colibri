@@ -11,7 +11,7 @@ import { SelectOption } from '@/components/Products/Select';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '@/redux/features/cartSlice';
 import { useRouter } from 'next/navigation';
-import { addCartItem } from '@/app/cart/fetchFunctionsCart';
+import { addCartItem } from '@/app/(sharedLayout)/cart/fetchFunctionsCart';
 import { RootState } from '@/redux/store';
 
 // const options = [

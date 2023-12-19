@@ -33,9 +33,7 @@ export default function RootLayout({
       <body className={`${inter.className} ${montserrat.variable} ${open_sans.variable} ${open_sans400.variable}`}>
         <div>
           <Header />
-          <main>
-            <ReduxProvider>{children}</ReduxProvider>
-          </main>
+          <ReduxProvider>{children}</ReduxProvider>
           <Footer />
         </div>
       </body>

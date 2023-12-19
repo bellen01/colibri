@@ -5,7 +5,7 @@ import Card from './Card';
 import Invoice from './Invoice';
 import Button from '../General/Button';
 import { CartProduct } from '@/types/CartProduct.types';
-import { saveOrder } from '@/app/cart/fetchFunctionsCart';
+import { saveOrder } from '@/app/(sharedLayout)/cart/fetchFunctionsCart';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 

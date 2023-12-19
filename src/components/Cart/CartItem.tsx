@@ -9,9 +9,9 @@ import { CartProduct } from '@/types/CartProduct.types';
 import { decreaseCartItem, increaseCartItem, removeItem } from '@/redux/features/cartSlice';
 import Link from 'next/link';
 import { Poster } from '@/types/Product.types';
-import { getPosterById } from '@/app/posters/fetchFunctions';
+import { getPosterById } from '@/app/(sharedLayout)/posters/fetchFunctions';
 import { RootState } from '@/redux/store';
-import { deleteCartItem, decreaseItemInCart, addCartItem } from '@/app/cart/fetchFunctionsCart';
+import { deleteCartItem, decreaseItemInCart, addCartItem } from '@/app/(sharedLayout)/cart/fetchFunctionsCart';
 
 interface ICartItemProps {
     productId: string,

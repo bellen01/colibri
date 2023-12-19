@@ -335,7 +335,7 @@ const ChangeCustomerInformation = ({ setState }: IChangeCustomerInformationProps
                 </form>
                 <p className={styles.message}>{message}</p>
                 <div className={styles.buttonContainer}>
-                    <Link href="/user/settings"><button className={styles.cancelButton}>Avbryt</button></Link>
+                    <Link href="/user/account-settings"><button className={styles.cancelButton}>Avbryt</button></Link>
                     <Button text="Spara" width='25%' onClick={handleSave} />
                     {/* <button type="submit">Spara</button> */}
                 </div>

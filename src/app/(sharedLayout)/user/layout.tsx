@@ -1,6 +1,7 @@
 "use client";
 import UserNav from "@/components/User/UserNav";
-import styles from "@/app/user/layout.module.scss";
+// import styles from "@/app/user/layout.module.scss";
+import styles from '@/app/(sharedLayout)/user/layout.module.scss';
 import HeroHeading from "@/components/General/HeroHeading";
 import { useEffect, useState } from "react";
 // import { getUserData } from "../posters/fetchFunctions";

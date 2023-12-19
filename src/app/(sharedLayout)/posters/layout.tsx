@@ -2,7 +2,8 @@
 import HeroHeading from "@/components/General/HeroHeading"
 import ProductFilter from "@/components/Products/ProductFilter"
 import UserNav from "@/components/User/UserNav"
-import styles from '@/app/posters/layout.module.scss';
+// import styles from '@/app/posters/layout.module.scss';
+import styles from '@/app/(sharedLayout)/posters/layout.module.scss';
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -30,7 +31,7 @@ export default function PostersLayout({
     }, [currentSegment])
 
     return (
-        <section>
+        <section className={styles.main}>
             {/* Include shared UI here e.g. a header or sidebar */}
             <HeroHeading heading={currentPage ? currentPage : "Posters"} />
             <div className={styles.filterAndChildrenContainer}>

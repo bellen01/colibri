@@ -75,12 +75,12 @@ const AccountSettings = () => {
                                 </div> */}
                             </div>
                             <div>
-                                <Link href="/user/settings/edit-information"><button className={styles.button}><FontAwesomeIcon icon={faPen} /></button></Link>
+                                <Link href="/user/account-settings/edit-information"><button className={styles.button}><FontAwesomeIcon icon={faPen} /></button></Link>
                             </div>
                         </div>
                     </div>
                 </div>
-                <Link href="/user/settings/change-password"><Button text={"Byt lösenord"} width={"50%"} /></Link>
+                <Link href="/user/account-settings/change-password"><Button text={"Byt lösenord"} width={"50%"} /></Link>
                 {/* <Link href="/user/settings/edit-information"><Button text={"Ändra kunduppgifter"} width={"50%"} /></Link> */}
             </div>
         </div>

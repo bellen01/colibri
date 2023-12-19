@@ -3,7 +3,7 @@ import styles from '@/components/styles/FavoritesItem.module.scss';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getFavorites, updateFavorites } from '@/app/posters/fetchFunctions';
+import { getFavorites, updateFavorites } from '@/app/(sharedLayout)/posters/fetchFunctions';
 import { Poster } from '@/types/Product.types';
 import Link from 'next/link';
 

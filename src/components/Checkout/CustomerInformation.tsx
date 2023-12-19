@@ -3,7 +3,7 @@ import styles from '@/components/styles/CustomerInformation.module.scss';
 import { User } from '@/types/User.types';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
-import { getUserData } from '@/app/user/fetchFunctionsUser';
+import { getUserData } from '@/app/(sharedLayout)/user/fetchFunctionsUser';
 import { logIn } from '@/redux/features/authSlice';
 
 type ICustomerInformationProps = {

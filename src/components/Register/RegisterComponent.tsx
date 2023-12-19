@@ -7,7 +7,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/features/userSlice';
 // import { registerUser } from '@/app/posters/fetchFunctions';
-import { registerUser } from '@/app/user/fetchFunctionsUser';
+import { registerUser } from '@/app/(sharedLayout)/user/fetchFunctionsUser';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

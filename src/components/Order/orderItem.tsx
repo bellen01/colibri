@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from '@/components/styles/OrderHistory.module.scss';
 import { Order } from '@/types/Order.types';
-import { getPosterById } from '@/app/posters/fetchFunctions';
+import { getPosterById } from '@/app/(sharedLayout)/posters/fetchFunctions';
 import { Poster } from '@/types/Product.types';
 
 interface IOrderItemProps {

@@ -1,5 +1,5 @@
 "use client";
-import { getFavorites } from '@/app/posters/fetchFunctions';
+import { getFavorites } from '@/app/(sharedLayout)/posters/fetchFunctions';
 import FavoritesItem from '@/components/Favorites/FavoritesItem'
 import styles from '@/components/styles/Favorites.module.scss';
 import { Poster } from '@/types/Product.types';
